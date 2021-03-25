@@ -1,0 +1,42 @@
+<%= form_with(model: money, local: true) do |form| %>
+  <% if money.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(money.errors.count, "error") %> prohibited this money from being saved:</h2>
+
+      <ul>
+        <% money.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :saving_amount %>
+    <%= form.text_field :saving_amount %>
+  </div>
+
+  <div class="field">
+    <%= form.label :day %>
+    <%= form.text_field :day %>
+  </div>
+
+  <div class="field">
+    <%= form.label :text %>
+    <%= form.text_field :text %>
+  </div>
+
+  <div class="field">
+    <%= form.label :goal %>
+    <%= form.text_field :goal %>
+  </div>
+
+  <div class="field">
+    <%= form.label :user %>
+    <%= form.text_field :user %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

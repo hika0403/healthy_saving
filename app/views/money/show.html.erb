@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Saving amount:</strong>
+  <%= @money.saving_amount %>
+</p>
+
+<p>
+  <strong>Day:</strong>
+  <%= @money.day %>
+</p>
+
+<p>
+  <strong>Text:</strong>
+  <%= @money.text %>
+</p>
+
+<p>
+  <strong>Goal:</strong>
+  <%= @money.goal %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @money.user %>
+</p>
+
+<%= link_to 'Edit', edit_money_path(@money) %> |
+<%= link_to 'Back', money_index_path %>
