@@ -16,26 +16,26 @@
 
 ## goalsテーブル
 
-| Column      | Type      | Option            | 
-| ----------- | --------- | ----------------- | 
-| weight_goal | string    | null: false       | 
-| saving_goal | string    | null: false       | 
-| purpose     | string    | null: false       | 
-| period      | data      | null: false       | 
-| user        | reference | foreign_key: true | 
+| Column      | Type       | Option            | 
+| ----------- | ---------- | ----------------- | 
+| weight_goal | string     | null: false       | 
+| saving_goal | string     | null: false       | 
+| purpose     | string     | null: false       | 
+| period      | date       | null: false       | 
+| user        | references | foreign_key: true | 
 
 ### Association
 - belongs_to :user
 
 ## moneysテーブル
 
-| Column        | Type      | Option            | 
-| ------------- | --------- | ----------------- | 
-| saving_amount | string    | null: false       | 
-| day           | date      | null: false       | 
-| text          | string    |                   | 
-| goal          | reference | foreign_key: true | 
-| user          | reference | foreign_key: true | 
+| Column        | Type       | Option            | 
+| ------------- | ---------- | ----------------- | 
+| saving_amount | string     | null: false       | 
+| day           | date       | null: false       | 
+| text          | string     |                   | 
+| goal          | references | foreign_key: true | 
+| user          | references | foreign_key: true | 
 
 ### Association
 - belongs_to :goal
@@ -43,11 +43,11 @@
 
 ## bodiesテーブル
 
-| Column | Type      | Option            | 
-| ------ | --------- | ----------------- | 
-| weight | integer   | null: false       | 
-| goal   | reference | foreign_key: true | 
-| user   | reference | foreign_key: true | 
+| Column | Type       | Option            | 
+| ------ | ---------- | ----------------- | 
+| weight | integer    | null: false       | 
+| goal   | references | foreign_key: true | 
+| user   | references | foreign_key: true | 
 
 ### Association
 - belongs_to :goal
