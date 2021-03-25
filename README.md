@@ -1,24 +1,54 @@
-# README
+## usersテーブル
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+| Column             | Type    | Option      | 
+| ------------------ | ------- | ----------- | 
+| family_name        | string  | null: false | 
+| given_name         | string  | null: false | 
+| email              | string  | null: false | 
+| encrypted_password | integer | null: false | 
+| nickname           | string  | null: false | 
+| birth_day          | date    | null: false | 
 
-Things you may want to cover:
+### Association
+- has_one :goal
+- has_many :moneys
+- has_many :bodies
 
-* Ruby version
+## goalsテーブル
 
-* System dependencies
+| Column      | Type      | Option            | 
+| ----------- | --------- | ----------------- | 
+| weight_goal | string    | null: false       | 
+| saving_goal | string    | null: false       | 
+| purpose     | string    | null: false       | 
+| period      | data      | null: false       | 
+| user        | reference | foreign_key: true | 
 
-* Configuration
+### Association
+- belongs_to :user
 
-* Database creation
+## moneysテーブル
 
-* Database initialization
+| Column        | Type      | Option            | 
+| ------------- | --------- | ----------------- | 
+| saving_amount | string    | null: false       | 
+| day           | date      | null: false       | 
+| text          | string    |                   | 
+| goal          | reference | foreign_key: true | 
+| user          | reference | foreign_key: true | 
 
-* How to run the test suite
+### Association
+- belongs_to :goal
+- belongs_to :user
 
-* Services (job queues, cache servers, search engines, etc.)
+## bodiesテーブル
 
-* Deployment instructions
+| Column | Type      | Option            | 
+| ------ | --------- | ----------------- | 
+| weight | integer   | null: false       | 
+| goal   | reference | foreign_key: true | 
+| user   | reference | foreign_key: true | 
 
-* ...
+### Association
+- belongs_to :goal
+- belongs_to :user
