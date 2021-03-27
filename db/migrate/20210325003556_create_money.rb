@@ -4,8 +4,8 @@ class CreateMoney < ActiveRecord::Migration[6.0]
       t.string :saving_amount, null: false
       t.date :day,             null: false
       t.string :text
-      # 他のテーブル作成後にカラムを追加する
-      # t.references :user,      null: false, type: :integer, foreign_key: true
+      t.references :user,      null: false, foreign_key: true
+    # 他のテーブル作成後にカラムを追加する
       # t.references :goal,      null: false, type: :integer, foreign_key: true
 
       t.timestamps
