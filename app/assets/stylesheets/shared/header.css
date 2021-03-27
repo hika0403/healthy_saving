@@ -1,4 +1,4 @@
-.header-3 {
+.header1 {
   box-sizing: border-box;
   width: 100%;
 }
@@ -14,7 +14,16 @@
   font-size: 1.2em;
 }
 
-.header-nav {
+.logo {
+  width: 300px;
+}
+
+.logo-name {
+  color: #999;
+  font-size: 30px;
+}
+
+.header-right {
   display: flex;
   align-items: center;
 }
@@ -23,19 +32,15 @@
   display: flex;
   align-items: center;
   margin-left: 16px;
-}
-
-p {
-  width: 150px;
+  list-style: none;
 }
 
 .header-button {
   box-sizing: border-box;
   display: inline-block;
-  padding: 0.5em 1.2em;
+  padding: 10px 15px;
   font-size: 12px;
   text-decoration: none;
-  cursor: pointer;
   user-select: none;
 }
 

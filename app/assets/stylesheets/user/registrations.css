@@ -22,15 +22,6 @@
   font-size: large;
 }
 
-.link-contents  > a,a:visited {
-  color:#fff;
-  text-decoration:underline;
-}
-
-.link-contents  > a:hover {
-  text-decoration:none;
-}
-
 form {
   background:#fff;
   border-radius:6px;

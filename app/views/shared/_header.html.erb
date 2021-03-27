@@ -1,18 +1,20 @@
 <%# css assets/stylesheets/shared/header.css %>
-<header class="header-3">
+<header class="header1">
   <div class="header-inner">
-    <div class="logo">
-      <p>食べたつもり貯金</p>
+    <div class="header-left">
+      <div class="logo">
+        <a class="logo-name" href="/">食べたつもり貯金</a>
+      </div>
     </div>
-    <div class="header-nav">
+    <div class="header-right">
       <ul class='header-nav-item'>
-      <% if user_signed_in? %>
-        <li><%= link_to current_user.nickname, class: "user-nickname" %></li>
-        <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "logout" %></li>
-      <% else %>
-        <li><%= link_to 'ログイン', new_user_session_path, class: "header-button header-login" %></li>
-        <li><%= link_to '新規登録', new_user_registration_path, class: "header-button header-post" %></li>
-      <% end %>
+        <% if user_signed_in? %>
+          <li><%= link_to current_user.nickname, class: "header-button header-login" %></li>
+          <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "header-button header-post" %></li>
+        <% else %>
+          <li><%= link_to 'ログイン', new_user_session_path, class: "header-button header-login" %></li>
+          <li><%= link_to '新規登録', new_user_registration_path, class: "header-button header-post" %></li>
+        <% end %>
       </ul>
     </div>
   </div>
