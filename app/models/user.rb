@@ -9,7 +9,7 @@ class User < ApplicationRecord
     validates :given_name
     validates :nickname
     validates :birth_day
-    validates :password, format: { with: /\A(?=.*?[a-z])(?=.*?[A-Z])(?=.*?\d)[a-zA-Z\d]{8,20}+\z/ }
+    validates :password, format: { with: /\A(?=.*?[a-z])(?=.*?[A-Z])(?=.*?[\d])\w{8,20}\z/ }
 
     with_options format: { with: /\A[ぁ-んァ-ヶ一-龥々]+\z/, message: '全角文字を使用してください' } do
       validates :family_name
