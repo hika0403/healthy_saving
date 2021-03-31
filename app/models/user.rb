@@ -19,7 +19,7 @@ class User < ApplicationRecord
   end
 
   has_one :goal
-  has_many :moneys
+  has_many :moneys, dependent: :destroy
   has_many :bodies
 
 end
