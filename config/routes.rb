@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users
-  resources :money
   root "money#index"
-  resources :moneys
+  resources :money
+  resources :goals
 end

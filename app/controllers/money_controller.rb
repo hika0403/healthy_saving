@@ -3,6 +3,7 @@ class MoneyController < ApplicationController
 
   def index
     @money = Money.all
+    @goal = Goal.all
   end
 
   def show
@@ -55,6 +56,6 @@ class MoneyController < ApplicationController
     end
 
     def money_params
-      params.require(:money).permit(:saving_amount, :day, :text, :goal, :user)
+      params.require(:money).permit(:saving_amount, :day, :text).merge(user_id: current_user.id)
     end
 end

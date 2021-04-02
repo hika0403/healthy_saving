@@ -18,8 +18,8 @@
 
 | Column      | Type       | Option            | 
 | ----------- | ---------- | ----------------- | 
-| weight_goal | string     | null: false       | 
-| saving_goal | string     | null: false       | 
+| weight_goal | integer    | null: false       | 
+| saving_goal | integer    | null: false       | 
 | purpose     | string     | null: false       | 
 | period      | date       | null: false       | 
 | user        | references | foreign_key: true | 
@@ -38,7 +38,7 @@
 | user          | references | foreign_key: true | 
 
 ### Association
-- belongs_to :goal
+<!-- - belongs_to :goal -->
 - belongs_to :user
 
 ## bodiesテーブル
@@ -50,5 +50,5 @@
 | user   | references | foreign_key: true | 
 
 ### Association
-- belongs_to :goal
+<!-- - belongs_to :goal -->
 - belongs_to :user
