@@ -1,0 +1,49 @@
+body {
+  height: 100%!important;
+  text-align: left;
+}
+
+.main-frame {
+  width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.main-container {
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: -15px;
+  margin-left: -15px;
+}
+
+.main-sidebar {
+  position: fixed;
+  box-sizing: border-box;
+  border-right: 1px solid hsl(0, 0%, 85%);
+  width: 20%;
+}
+
+.flex-column {
+  flex-direction: column!important;
+  flex-wrap: wrap;
+}
+
+.nav-item {
+  font-size: 20px;
+  list-style: none;
+  will-change: background-color,box-shadow,color;
+  border-bottom: 1px solid hsl(0, 0%, 85%);
+  padding: 20px;
+}
+
+.main-content {
+
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 15px;
+}
