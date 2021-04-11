@@ -1,71 +1,188 @@
-<%= render "shared/header" %>
+<!doctype html>
+<html lang="ja" >
+  <head>
+    <title>ダッシュボードテンプレート for Bootstrap · Bootstrap</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Noto+Sans+JP&display=swap" rel="stylesheet">
+    <link href="dashboard.css" rel="stylesheet">
+    <link href="../example.css" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type="text/css">
+      a, a:visited, a:focus, a:hover {
+        text-decoration: none;
+      }
+    </style>
+  </head>
+  <body >
+    <a id="skippy" class="sr-only sr-only-focusable" href="#content">
+  <div class="container">
+    <span class="skiplink-text">Skip to main content</span>
+  </div>
+</a>
 
-<p id="notice"><%= notice %></p>
+<%# ヘッダー %>
+    <nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
+  <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="/">食べたつもり貯金</a>
+  <ul class="navbar-nav px-3">
+    <li class="nav-item text-nowrap">
+      <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "nav-link" %>
+    </li>
+  </ul>
+</nav>
 
-<%= link_to '目標設定', new_goal_path %>
+<%# サイドバー %>
+<div class="container-fluid">
+  <div class="row">
+    <nav class="col-md-2 d-none d-md-block bg-light sidebar">
+      <div class="sidebar-sticky">
+        <ul class="nav flex-column">
+          <li class="nav-item">
+          <%# 映らない %>
+            <a class="nav-link active" href="#">
+              <span data-feather="home"></span>
+              <span class="sr-only">映らない</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/money/new">
+              <span data-feather="plus-circle"></span>
+              今日の記録
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/money/money[:id]">
+              <span data-feather="shopping-cart"></span>
+              貯金記録
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">
+              <span data-feather="bar-chart-2"></span>
+              体重記録
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/users/edit">
+              <span data-feather="users"></span>
+              ユーザー管理
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/">
+              <span data-feather="file"></span>
+              トップページへ戻る
+            </a>
+          </li>
+        </ul>
+      </div>
+    </nav>
 
-<h1>目標</h1>
-<table>
-  <thead>
-    <tr>
-      <th>Saving Goal</th>
-      <th>Weight Goal</th>
-      <th>Period</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+<%# メインコンテンツ %>
+    <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+    <%# 映らない %>
+    <a class="nav-link active" href="#">
+      <span data-feather="home"></span>
+      <span class="sr-only">映らない</span>
+    </a>
 
-  <tbody>
-    <% @goal.each do |goal| %>
-      <tr>
-        <td><%= goal.saving_goal %></td>
-        <td><%= goal.weight_goal %></td>
-        <td><%= goal.period %></td>
+    <% unless @goal.present? %> 
+      <%= link_to 'まずは目標を設定しよう', new_goal_path, class: "h1" %>
+      <img src="app/assets/images/goal_index.jpg" class="rounded mx-auto d-block" alt="Responsive image">
+    <% end %> 
 
-        <td><%= goal.user %></td>
-        <td><%= link_to 'Show', goal %></td>
-        <td><%= link_to 'Edit', edit_money_path(goal) %></td>
-        <td><%= link_to 'Destroy', goal, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+    <% if @goal.present? %>
+    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+      <h1 class="h2">貯金金額</h1>
+      <div class="btn-toolbar mb-2 mb-md-0">
+        <div class="btn-group mr-2">
+          <!-- <button type="button" class="btn btn-sm btn-outline-secondary">Share</button> -->
+          <button type="button" class="btn btn-sm btn-outline-secondary">共有</button>
+          <!-- <button type="button" class="btn btn-sm btn-outline-secondary">Export</button> -->
+          <button type="button" class="btn btn-sm btn-outline-secondary">出力</button>
+        </div>
+        <button type="button" class="btn btn-sm btn-outline-secondary dropdown-toggle">
+          <span data-feather="calendar"></span>
+          <!-- This week -->
+          今週
+        </button>
+      </div>
+    </div>
+
+    <h1>目標</h1>
+    <table>
+      <thead>
+        <tr>
+          <th>貯金金額目標</th>
+          <th>目標体重</th>
+          <th>いつまで</th>
+          <th colspan="3"></th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @goal.each do |goal| %>
+          <tr>
+            <td><%= goal.saving_goal %></td>
+            <td><%= goal.weight_goal %></td>
+            <td><%= goal.period %></td>
+          </tr>
+          <%= link_to '目標を変更する', goal_path(goal.id), class: "h3" %>
+        <% end %>
+      </tbody>
+    </table>
+
+    <canvas class="my-4 w-100" id="myChart" width="900" height="380"></canvas>
     <% end %>
-  </tbody>
-</table>
+    </main>
+  </div>
+</div>
 
+<!-- Icons -->
+<script src="https://unpkg.com/feather-icons/dist/feather.min.js"></script>
+<script>
+  feather.replace()
+</script>
 
+<!-- Graphs -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js"></script>
+<script>
+  var ctx = document.getElementById("myChart");
+  var myChart = new Chart(ctx, {
+    type: 'line',
+    data: {
+      labels: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+      datasets: [{
+        data: [15339, 21345, 18483, 24003, 23489, 24092, 12034],
+        lineTension: 0,
+        backgroundColor: 'transparent',
+        borderColor: '#007bff',
+        borderWidth: 4,
+        pointBackgroundColor: '#007bff'
+      }]
+    },
+    options: {
+      scales: {
+        yAxes: [{
+          ticks: {
+            beginAtZero: false
+          }
+        }]
+      },
+      legend: {
+        display: false,
+      }
+    }
+  });
+</script>
 
-<h1>今までの合計金額</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Saving amount</th>
-      <th>Day</th>
-      <th>Text</th>
-      <th>Goal</th>
-      <th>User</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @money.each do |money| %>
-      <tr>
-        <td><%= money.saving_amount %></td>
-        <td><%= money.day %></td>
-        <td><%= money.text %></td>
-
-        <%# <><%= money.goal %>
-
-        <td><%= money.user %></td>
-        <td><%= link_to 'Show', money %></td>
-        <td><%= link_to 'Edit', edit_money_path(money) %></td>
-        <td><%= link_to 'Destroy', money, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to '今日の記録', new_money_path %>
-
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script>
+  window.jQuery || document.write('<script src="/docs/4.4/assets/js/vendor/jquery-slim.min.js"><\/script>')
+</script><script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script><script src="/docs/4.4/assets/js/vendor/anchor.min.js"></script>
+<script src="/docs/4.4/assets/js/vendor/clipboard.min.js"></script>
+<script src="/docs/4.4/assets/js/vendor/bs-custom-file-input.min.js"></script>
+<script src="/docs/4.4/assets/js/src/application.js"></script>
+<script src="/docs/4.4/assets/js/src/search.js"></script>
+<script src="/docs/4.4/assets/js/src/ie-emulation-modes-warning.js"></script>
+  </body>
+</html>

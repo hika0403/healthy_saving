@@ -1,9 +1,4 @@
-body {
-  height: 100%!important;
-  text-align: left;
-}
-
-.main-frame {
+/* .main-frame {
   width: 100%;
   padding-right: 15px;
   padding-left: 15px;
@@ -18,11 +13,12 @@ body {
   margin-left: -15px;
 }
 
-.main-sidebar {
-  position: fixed;
+.side-bar {
+  background-color: beige;
   box-sizing: border-box;
   border-right: 1px solid hsl(0, 0%, 85%);
-  width: 20%;
+  width: 300px;
+  height: 100vh;
 }
 
 .flex-column {
@@ -39,11 +35,12 @@ body {
 }
 
 .main-content {
-
+  position: fixed;
+  width: 80%;
 }
 
 .row {
   display: flex;
   flex-wrap: wrap;
   margin: 0 15px;
-}
+} */
