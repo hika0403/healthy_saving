@@ -31,14 +31,12 @@
 
 | Column        | Type       | Option            | 
 | ------------- | ---------- | ----------------- | 
-| saving_amount | string     | null: false       | 
+| saving_amount | integer    | null: false       | 
 | day           | date       | null: false       | 
 | text          | string     |                   | 
-| goal          | references | foreign_key: true | 
 | user          | references | foreign_key: true | 
 
 ### Association
-<!-- - belongs_to :goal -->
 - belongs_to :user
 
 ## bodiesテーブル
@@ -46,9 +44,7 @@
 | Column | Type       | Option            | 
 | ------ | ---------- | ----------------- | 
 | weight | integer    | null: false       | 
-| goal   | references | foreign_key: true | 
 | user   | references | foreign_key: true | 
 
 ### Association
-<!-- - belongs_to :goal -->
 - belongs_to :user
