@@ -1,54 +1,27 @@
-<%= render "shared/header" %>
+<!doctype html>
+<html lang="ja">
 
-<h1>目標設定</h1>
-<%= form_with(model: @goal, url: goals_path, method: :post, local: true) do |goal| %>
-  <%# <% if goal.errors.any? %>
-    <%# <div id="error_explanation"> %>
-      <%# <h2><%= pluralize(goal.errors.count, "error") %> 
-      <%# prohibited this goal from being saved:</h2> %> 
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-      <%# <ul>
-        <% goal.errors.full_messages.each do |message| %>
-          <%# <li><%= message</li>  %>
-        <%# <% end %>
-      <%# </ul>  %>
-    <%# </div> %>
-  <%# <% end %>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+</head>
 
-  <div class="field">
-    <%= goal.label :saving_goal %>
-    <%= goal.text_field :saving_goal %>
-  </div>
+<body>
+  <br>
+  <h1 class="mx-auto" style="width: 400px;">目標を設定しよう</h1>
+  <br>
 
-    <div class="field">
-    <%= goal.label :weight_goal %>
-    <%= goal.text_field :weight_goal %>
-  </div>
+  <%= render "goalform" %>
 
-  <div class="field">
-    <label class="form-text">生年月日</label>
-    <span class="indispensable">必須</span>
-  </div>
-  <div class='input-birth-wrap'>
-    <%= raw sprintf(
-      goal.date_select(
-      :period,
-      class:'select-birth',
-      id:"birth-date",
-      use_month_numbers: true,
-      prompt:'--',
-      start_year: 1930,
-      end_year: (Time.now.year - 5),
-      date_separator: '%s'),
-      "<p> 年 </p>", "<p> 月 </p>") + "<p> 日 </p>" %>
-  </div>
+  <!-- Optional JavaScript -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+</body>
 
-  <div class="field">
-    <%= goal.label :purpose %>
-    <%= goal.text_field :purpose %>
-  </div>
-
-  <div class="actions">
-    <%= goal.submit %>
-  </div>
-<% end %>
+</html>

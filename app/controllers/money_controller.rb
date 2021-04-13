@@ -1,5 +1,5 @@
 class MoneyController < ApplicationController
-  before_action :set_money, only: %i[ show edit update destroy ]
+  before_action :set_money, only: %i(edit update destroy)
 
   def index
     @money = Money.all
@@ -7,25 +7,27 @@ class MoneyController < ApplicationController
   end
 
   def show
+    @money = Money.all
   end
 
   def new
-    @money = Money.new
+    @money_body = MoneyBody.new
   end
 
   def edit
   end
 
   def create
-    @money = Money.new(money_params)
+    @money_body = MoneyBody.new(money_params)
 
     respond_to do |format|
-      if @money.save
-        format.html { redirect_to @money, notice: "Money was successfully created." }
-        format.json { render :show, status: :created, location: @money }
+      if @money_body.valid?
+        @money_body.save
+        format.html { redirect_to root_path, notice: "Money was successfully created." }
+        format.json { render :show, status: :created, location: @money_body }
       else
         format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @money.errors, status: :unprocessable_entity }
+        format.json { render json: @money_body.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -56,6 +58,6 @@ class MoneyController < ApplicationController
     end
 
     def money_params
-      params.require(:money).permit(:saving_amount, :day, :text).merge(user_id: current_user.id)
+      params.require(:money_body).permit(:saving_amount, :day, :text, :weight).merge(user_id: current_user.id)
     end
 end

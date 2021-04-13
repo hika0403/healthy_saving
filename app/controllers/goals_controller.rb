@@ -1,5 +1,5 @@
 class GoalsController < ApplicationController
-  before_action :set_goal, only: %i[ show edit update destroy ]
+  before_action :set_goal, only: %i(show edit update destroy)
 
   def index
   end
