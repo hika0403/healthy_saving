@@ -1,5 +1,9 @@
-<h1>New Money</h1>
+<body>
+  <br>
+  <h1 class="mx-auto" style="width: 400px;">今日の記録をしよう</h1>
+  <br>
 
-<%= render 'form', money_body: @money_body %>
+  <%= render 'form', money_body: @money_body %>
 
-<%= link_to 'Back', root_path %>
+  <%= link_to 'back', root_path, class:"btn btn-secondary btn-lg rounded-pill float-right" %>
+</body>
