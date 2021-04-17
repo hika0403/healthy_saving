@@ -32,7 +32,6 @@
 | Column        | Type       | Option            | 
 | ------------- | ---------- | ----------------- | 
 | saving_amount | integer    | null: false       | 
-| day           | date       | null: false       | 
 | text          | string     |                   | 
 | user          | references | foreign_key: true | 
 

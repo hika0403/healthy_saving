@@ -28,7 +28,7 @@
         <% @money.each do |money| %>
         <tbody>
           <tr scope="row">
-            <td><%= money.day %></td>
+            <td><%= money.created_at.strftime('%Y/%m/%d') %></td>
             <td><%= money.saving_amount %></td>
             <td><%= money.text %></td>
             <td><%= link_to money_path, method: :delete, data: { confirm: '削除しますか?' } do %>

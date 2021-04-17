@@ -58,6 +58,6 @@ class MoneyController < ApplicationController
     end
 
     def money_params
-      params.require(:money_body).permit(:saving_amount, :day, :text, :weight).merge(user_id: current_user.id)
+      params.require(:money_body).permit(:saving_amount, :text, :weight).merge(user_id: current_user.id)
     end
 end
