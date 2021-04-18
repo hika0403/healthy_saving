@@ -1,43 +1,36 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
+<body>
+  <br>
+  <%= render 'shared/header' %>
+  <br>
+  <br>
+  <div class="border col-7 container">
+    <br>
+    <h2>ユーザー管理</h2>
+    <br>
+    <%= form_with(url: user_registration_path(current_user.id), local: true) do |f| %>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
-
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
-
-  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-    <% if @minimum_password_length %>
-      <br />
-      <em><%= @minimum_password_length %> characters minimum</em>
+      <div class="row align-items-center justify-content-center">
+        <div class="col-mdd-flex">
+          <form>
+            <div class="form-group">
+              <%= f.label :メールアドレス %>
+              <%= f.email_field :email, class:"form-control" %>
+            </div>
+            <div class="form-group">
+              <%= f.label :新しいパスワード %> <i>(<%= @minimum_password_length %> characters minimuｍ)</i><br />
+              <%= f.password_field :password, class:"form-control" %>
+            </div>
+            <div class="form-group">
+              <%= f.label :確認用にパスワードをもう一度入力してください %><br />
+              <%= f.password_field :password_confirmation, class:"form-control"%>
+            </div>
+            <div class="container">
+              <%= f.submit "決定", class:"btn btn-primary btn-lg rounded-pill" %>
+            </div>
+          </form>
+        </div>
+      </div>
     <% end %>
+    <%# <%= link_to "削除", user_registration_path(@user.id), method: :delete, class:"btn btn-primary btn-lg rounded-pill float-right"%> %>
   </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-    <%= f.password_field :current_password, autocomplete: "current-password" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Update" %>
-  </div>
-<% end %>
-
-<h3>Cancel my account</h3>
-
-<p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
-
-<%= link_to "Back", :back %>
+</body>
