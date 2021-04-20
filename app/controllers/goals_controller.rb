@@ -12,7 +12,7 @@ class GoalsController < ApplicationController
     @goal = Goal.new(goal_params)
 
     if @goal.save
-      redirect_to root_path
+      redirect_to money_index_path
     else 
       render :new
     end
@@ -23,7 +23,7 @@ class GoalsController < ApplicationController
 
   def destroy
     @goal.destroy
-    redirect_to root_path
+    redirect_to money_index_path
   end
 
   private

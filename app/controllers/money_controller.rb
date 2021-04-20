@@ -1,5 +1,8 @@
 class MoneyController < ApplicationController
-  before_action :set_money, only: %i(edit update destroy)
+  before_action :set_money, only: [:destroy]
+
+  def lp
+  end
 
   def index
     @money = Money.all
@@ -14,8 +17,8 @@ class MoneyController < ApplicationController
     @money_body = MoneyBody.new
   end
 
-  def edit
-  end
+  # def edit
+  # end
 
   def create
     @money_body = MoneyBody.new(money_params)
@@ -23,7 +26,7 @@ class MoneyController < ApplicationController
     respond_to do |format|
       if @money_body.valid?
         @money_body.save
-        format.html { redirect_to root_path, notice: "Money was successfully created." }
+        format.html { redirect_to money_index_path, notice: "Money was successfully created." }
         format.json { render :show, status: :created, location: @money_body }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -32,22 +35,22 @@ class MoneyController < ApplicationController
     end
   end
 
-  def update
-    respond_to do |format|
-      if @money.update(money_params)
-        format.html { redirect_to @money, notice: "Money was successfully updated." }
-        format.json { render :show, status: :ok, location: @money }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @money.errors, status: :unprocessable_entity }
-      end
-    end
-  end
+  # def update
+  #   respond_to do |format|
+  #     if @money.update(money_params)
+  #       format.html { redirect_to @money, notice: "Money was successfully updated." }
+  #       format.json { render :show, status: :ok, location: @money }
+  #     else
+  #       format.html { render :edit, status: :unprocessable_entity }
+  #       format.json { render json: @money.errors, status: :unprocessable_entity }
+  #     end
+  #   end
+  # end
 
   def destroy
     @money.destroy
     respond_to do |format|
-      format.html { redirect_to money_index_url, notice: "Money was successfully destroyed." }
+      format.html { redirect_to money_index_path, notice: "Money was successfully destroyed." }
       format.json { head :no_content }
     end
   end

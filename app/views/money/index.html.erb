@@ -40,13 +40,6 @@
       <div class="sidebar-sticky">
         <ul class="nav flex-column">
           <li class="nav-item">
-          <%# 映らない %>
-            <a class="nav-link active p-4" href="#">
-              <span data-feather="home"></span>
-              <span class="sr-only">映らない</span>
-            </a>
-          </li>
-          <li class="nav-item">
             <a class="nav-link" href="/money/new">
               <span data-feather="plus-circle"></span>
               今日の記録
@@ -71,7 +64,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/">
+            <a class="nav-link" href="/money">
               <span data-feather="file"></span>
               トップページへ戻る
             </a>
@@ -82,12 +75,6 @@
 
 <%# main-content %>
     <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
-    <%# 映らない %>
-    <a class="nav-link active p-4" href="#">
-      <span data-feather="home"></span>
-      <span class="sr-only">映らない</span>
-    </a>
-
     <% unless @goal.present? %> 
       <%= link_to '目標を設定しよう', new_goal_path, class: "h1" %>
       <%# 写真 %>

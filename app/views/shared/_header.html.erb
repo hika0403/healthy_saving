@@ -1,8 +1,24 @@
-<nav class="navbar navbar-dark fixed-top bg-secondary flex-md-nowrap p-2 shadow">
-  <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="/">食べたつもり貯金</a>
-  <ul class="navbar-nav px-3">
-    <li class="nav-item text-nowrap">
-      <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "nav-link" %>
-    </li>
-  </ul>
-</nav>
+<div class="container">
+  <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
+
+    <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
+      <li><a href="/money" class="nav-link px-2 link-secondary">食べたつもり貯金</a></li>
+    </ul>
+
+    <div class="col-md-3 text-end">
+      <button type="button" class="btn btn-outline-primary me-2">Login</button>
+      <button type="button" class="btn btn-primary">Sign-up</button>
+      <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "btn btn-outline-primary me-2" %>
+    </div>
+  </header>
+
+  <%# <nav class="navbar navbar-dark fixed-top bg-secondary flex-md-nowrap p-2 shadow">
+    <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="/money">食べたつもり貯金</a>
+    <ul class="navbar-nav px-3">
+      <li class="nav-item text-nowrap">
+        <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "nav-link" %>
+      <%# </li>
+    </ul>
+  </nav> %> 
+
+</div>
