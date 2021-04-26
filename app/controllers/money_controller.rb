@@ -7,6 +7,7 @@ class MoneyController < ApplicationController
   def index
     @money = Money.all
     @goal = Goal.all
+    @bodies = Body.all
   end
 
   def show
