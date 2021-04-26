@@ -1,7 +1,5 @@
 Rails.application.routes.draw do
-  devise_for :users, :controllers => {
-    :registrations => 'users/registrations'
-  }
+  devise_for :users
   root "money#lp"
   resources :money, only: [:index, :new, :create, :show, :destroy]
   resources :bodies, only: [:show, :destroy]

@@ -1,32 +1,40 @@
 <%= render "shared/header" %>
-
-<div class="user-contents">
+<br>
+<br>
+<div class="border col-7 container">
+  <br>
   <h2>ログインをしよう！</h2>
+  <br>
 
-  <%= form_with model: @user, url: new_user_session_path, method: :post, class: 'registration-main', local: true do |f| %>
-    <%= render "devise/shared/error_messages", model: f.object %>
+  <%= form_with model: @user, url: new_user_session_path, method: :post, local: true do |f| %>
+    <div class="row align-items-center justify-content-center">
+      <div class="col-mdd-flex">
 
-    <div class="field">
-      <%= f.label :"メールアドレス  " %><br />
-      <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-    </div>
+        <%= render "devise/shared/error_messages", model: f.object %>
 
-    <div class="field">
-      <%= f.label :"パスワード" %>
-      <em>(8 characters minimum)</em>
-      <%= f.password_field :password, autocomplete: "current-password" %>
-    </div>
+        <form>
+          <div class="form-group">
+            <%= f.label :"メールアドレス" %><br />
+            <%= f.email_field :email, class:"form-control", placeholder:"aaa@gmail.com" %>
+          </div>
 
-    <div class="field">
-      <%= f.label :"確認用パスワード" %>
-      <em>確認のため再度パスワードを入力して下さい</em>
-      <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-    </div>
+          <div class="form-group">
+            <%= f.label :"パスワード" %>
+            <em>(8 characters minimum)</em>
+            <%= f.password_field :password, class:"form-control" %>
+          </div>
 
-    <div class="actions">
-      <%= f.submit "Log in" %>
+          <div class="form-group">
+            <%= f.label :"確認用パスワード" %>
+            <em>確認のため再度パスワードを入力して下さい</em>
+            <%= f.password_field :password_confirmation, class:"form-control" %>
+          </div>
+
+          <div class="container">
+            <%= f.submit "Log in", class:"btn btn-success btn-lg rounded-pill" %>
+          </div>
+        </form>
+      </div>
     </div>
   <% end %>
-
-  <%= render "devise/shared/links" %>
 </div>

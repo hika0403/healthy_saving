@@ -3,7 +3,7 @@
 
     <div class='d-flex flex-row'>
       <% if user_signed_in? %>
-        <%= link_to current_user.given_name, "#", class: "btn btn-outline-success me-2" %>
+        <%= link_to "#{current_user.given_name}さん", "#", class: "btn btn-outline-success me-2" %>
         <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "btn btn-success" %>
       <% else %>
         <%= link_to 'ログイン', new_user_session_path, class: "btn btn-outline-success me-2" %>

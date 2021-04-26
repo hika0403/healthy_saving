@@ -1,64 +1,67 @@
 <%= render "shared/header" %>
-
-<div class="user-contents">
+<br>
+<br>
+<div class="border col-7 container">
   <h2>ようこそ！新規登録をしよう！</h2>
 
-  <%= form_with model: @user, url: user_registration_path, method: :post, class: 'registration-main', local: true do |f| %>
-    <%= render "devise/shared/error_messages", model: f.object %>
+  <%= form_with model: @user, url: user_registration_path, method: :post, local: true do |f| %>
+    <div class="row align-items-center justify-content-center">
+      <div class="col-mdd-flex">
+        <%= render "devise/shared/error_messages", model: f.object %>
 
-    <div class="field">
-      <%= f.label :"苗字" %><br />
-      <%= f.text_field :family_name, autofocus: true, autocomplete: "falimy_name" %>
-    </div>
+        <div class="form-group">
+          <%= f.label :"苗字" %><br />
+          <%= f.text_field :family_name, autofocus: true, class:"form-control", placeholder:"田中" %>
+        </div>
 
-    <div class="field">
-      <%= f.label :"名前" %><br />
-      <%= f.text_field :given_name, autocomplete: "given_name" %>
-    </div>
+        <div class="form-group">
+          <%= f.label :"名前" %><br />
+          <%= f.text_field :given_name, class:"form-control", placeholder:"太郎" %>
+        </div>
 
-    <div class="field">
-      <%= f.label :"メールアドレス" %><br />
-      <%= f.email_field :email, autocomplete: "email" %>
-    </div>
+        <div class="form-group">
+          <%= f.label :"メールアドレス" %><br />
+          <%= f.email_field :email, class:"form-control", placeholder:"aaa@gmail.com" %>
+        </div>
 
-    <div class="field">
-      <%= f.label :"パスワード" %>
-      <em>(8 characters minimum)</em>
-      <%= f.password_field :password, autocomplete: "new-password" %>
-    </div>
+        <div class="form-group">
+          <%= f.label :"パスワード" %>
+          <em>(8 characters minimum)</em>
+          <%= f.password_field :password, class:"form-control" %>
+        </div>
 
-    <div class="field">
-      <%= f.label :"確認のためにもう一度パスワードを入力してください" %><br />
-      <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-    </div>
+        <div class="form-group">
+          <%= f.label :"確認のためにもう一度パスワードを入力してください" %><br />
+          <%= f.password_field :password_confirmation, class:"form-control" %>
+        </div>
 
-    <div class="field">
-      <%= f.label :"ニックネーム" %><br />
-      <%= f.text_field :nickname, autocomplete: "nickname" %>
-    </div>
+        <div class="form-group">
+          <%= f.label :"ニックネーム" %><br />
+          <%= f.text_field :nickname, class:"form-control" %>
+        </div>
 
-    <div class="field">
-      <label class="form-text">生年月日</label>
-      <span class="indispensable">必須</span>
-    </div>
-    <div class='input-birth-wrap'>
-      <%= raw sprintf(
-                  f.date_select(
-                    :birth_day,
-                    class:'select-birth',
-                    id:"birth-date",
-                    use_month_numbers: true,
-                    prompt:'--',
-                    start_year: 1930,
-                    end_year: (Time.now.year - 5),
-                    date_separator: '%s'),
-                  "<p> 年 </p>", "<p> 月 </p>") + "<p> 日 </p>" %>
-    </div>
+        <div class="form-group">
+          <label class="form-text">生年月日</label>
+          <span class="indispensable">必須</span>
+        </div>
+        <div class='input-birth-wrap'>
+          <%= raw sprintf(
+                      f.date_select(
+                        :birth_day,
+                        class:'select-birth',
+                        id:"birth-date",
+                        use_month_numbers: true,
+                        prompt:'--',
+                        start_year: 1930,
+                        end_year: (Time.now.year - 5),
+                        date_separator: '%s'),
+                      "<p> 年 </p>", "<p> 月 </p>") + "<p> 日 </p>" %>
+        </div>
 
-    <div class="actions">
-      <%= f.submit "Sign in" %>
+        <div class="container">
+          <%= f.submit "Sign in", class:"btn btn-success btn-lg rounded-pill" %>
+        </div>
+      </div>
     </div>
   <% end %>
-
-  <%= render "devise/shared/links" %>
 </div>
