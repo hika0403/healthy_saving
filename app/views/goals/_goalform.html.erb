@@ -1,9 +1,9 @@
-    <div class="border col-7 container">
+    <div class="border col-7 container my-5">
         <br>
-        <h2>目標設定</h2>
+        <h2>Setting Goal</h2>
         <br>
         <%= form_with(model: @goal, url: goals_path, method: :post, local: true) do |goal| %>
-        <div class="row align-items-center justify-content-center">
+        <div class="row align-items-center justify-content-center my-3">
             <div class="col-mdd-flex">
                 <form>
                     <div class="form-group">
@@ -15,8 +15,8 @@
                       <%= goal.text_field :weight_goal, class:"form-control", placeholder:"50" %>
                     </div>
                     <div class="form-group">
-                        <label>生年月日</label>
-                        <span>必須</span>
+                        <label>期限</label>
+                        <span>（いつまでに達成するのか）</span>
                     </div>
                     <div>
                       <%= raw sprintf(
@@ -35,7 +35,7 @@
                       <%= goal.text_field :purpose, class:"form-control", placeholder:"カバンを買う" %>
                     </div>
                     <div class="container">
-                      <%= goal.submit '決定', class:"btn btn-primary btn-lg rounded-pill" %>
+                      <%= goal.submit 'Create', class:"btn btn-outline-success btn-lg w-100" %>
                     </div>
                 </form>
             </div>
