@@ -6,5 +6,5 @@ Rails.application.routes.draw do
   root "money#lp"
   resources :money, only: [:index, :new, :create, :show, :destroy]
   resources :bodies, only: [:show, :destroy]
-  resources :goals, only: [:new, :create, :show, :destroy]
+  resources :goals, only: [:new, :create, :show, :update, :destroy]
 end

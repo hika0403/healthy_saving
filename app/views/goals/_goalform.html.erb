@@ -1,44 +1,69 @@
-    <div class="border col-7 container my-5">
-        <br>
-        <h2>Setting Goal</h2>
-        <br>
-        <%= form_with(model: @goal, url: goals_path, method: :post, local: true) do |goal| %>
-        <div class="row align-items-center justify-content-center my-3">
-            <div class="col-mdd-flex">
-                <form>
-                    <div class="form-group">
-                      <%= goal.label :貯金金額 %>
-                      <%= goal.text_field :saving_goal, class:"form-control", placeholder:"30" %>
-                    </div>
-                    <div class="form-group">
-                      <%= goal.label :体重 %>
-                      <%= goal.text_field :weight_goal, class:"form-control", placeholder:"50" %>
-                    </div>
-                    <div class="form-group">
-                        <label>期限</label>
-                        <span>（いつまでに達成するのか）</span>
-                    </div>
-                    <div>
-                      <%= raw sprintf(
-                        goal.date_select(
-                          :period,
-                          class:'form-control',
-                          use_month_numbers: true,
-                          prompt:'--',
-                          start_year: Time.now.year,
-                          end_year: (Time.now.year + 10),
-                          date_separator: '%s'),
-                        "<p> 年 </p>", "<p> 月 </p>") + "<p> 日 </p>" %>
-                    </div>
-                    <div class="form-group">
-                      <%= goal.label :目的 %>
-                      <%= goal.text_field :purpose, class:"form-control", placeholder:"カバンを買う" %>
-                    </div>
-                    <div class="container">
-                      <%= goal.submit 'Create', class:"btn btn-outline-success btn-lg w-100" %>
-                    </div>
-                </form>
+<!doctype html>
+<html>
+  <head>
+    <script src="https://kit.fontawesome.com/81c73138ec.js" crossorigin="anonymous"></script>
+    <style type="text/css">
+      body {
+        background:#63b47a;
+      }
+      .border{
+        box-shadow: 45px 45px 0px rgba(0, 0, 0, .1);
+      }
+      i {
+        font-size: 40pt;
+        min-width: 40px;
+        margin: 0px 25px;
+        vertical-align: bottom;
+      }
+      .form-control {
+        background:#f5f5f5;
+        border:1px solid #eee;
+      }
+      .btn {
+        box-shadow: 0px 7px 0px rgba(86, 34, 16);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container border rounded my-5 py-3 col-md-5 bg-white">
+      <a type="button" onclick="history.back()"><i class="fas fa-arrow-left"></i></a>
+      <br>
+      <h2 class="text-center"><i class="fas fa-piggy-bank"></i>Setting Goal</h2>
+      <br>
+      <%= form_with(model: @goal, local: true) do |goal| %>
+        <div class="row">
+          <form>
+            <div class="form-group mt-4">
+              <%= goal.text_field :saving_goal, class:"form-control p-3", placeholder:"貯金金額 ex)30" %>
             </div>
+            <div class="form-group mt-4">
+              <%= goal.text_field :weight_goal, class:"form-control p-3", placeholder:"体重 ex)50" %>
+            </div>
+            <div class="form-group mt-4">
+                <label class="form-label">期限</label>
+                <span>（いつまでに達成するのか）</span>
+            </div>
+            <div>
+              <%= raw sprintf(
+                goal.date_select(
+                  :period,
+                  class:'form-control',
+                  use_month_numbers: true,
+                  prompt:'--',
+                  start_year: Time.now.year,
+                  end_year: (Time.now.year + 10),
+                  date_separator: '%s'),
+                "年", "月") + "日" %>
+            </div>
+            <div class="form-group mt-4">
+              <%= goal.text_field :purpose, class:"form-control py-5", placeholder:"目的 ex)高級カバンを買う" %>
+            </div>
+            <div class="d-flex flex-row justify-content-center mt-4">
+              <%= goal.submit 'Create', class:"btn btn-danger btn-lg w-100 p-4" %>
+            </div>
+          </form>
         </div>
-        <% end %>
+      <% end %>
     </div>
+  </body>
+</html>

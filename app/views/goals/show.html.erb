@@ -1,10 +1,1 @@
-<body>
-  <br>
-  <h1 class="mx-auto" style="width: 400px;">目標を変更しよう</h1>
-  <br>
-
-  <%= render "goalform" %>
-
-  <%= link_to 'delete', goal_path(@goal.id), method: :delete, class:"btn btn-primary btn-lg rounded-pill float-right" %>
-  <%= link_to 'back', root_path, class:"btn btn-secondary btn-lg rounded-pill float-right" %>
-</body>
+<%= render 'goalform' %>

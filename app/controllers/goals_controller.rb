@@ -1,5 +1,5 @@
 class GoalsController < ApplicationController
-  before_action :set_goal, only: %i(show edit update destroy)
+  before_action :set_goal, only: %i(show update destroy)
 
   def index
   end
@@ -19,6 +19,14 @@ class GoalsController < ApplicationController
   end
 
   def show
+  end
+
+  def update
+    if @goal.update(goal_params)
+      redirect_to money_index_path
+    else
+      render :show
+    end
   end
 
   def destroy

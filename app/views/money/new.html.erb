@@ -1,9 +1,30 @@
-<body>
-  <br>
-  <h1 class="mx-auto" style="width: 400px;">今日の記録をしよう</h1>
-  <br>
-
-  <%= render 'form', money_body: @money_body %>
-
-  <%= link_to 'back', money_index_path, class:"btn btn-secondary btn-lg rounded-pill float-right" %>
-</body>
+<!doctype html>
+<html>
+  <head>
+    <script src="https://kit.fontawesome.com/81c73138ec.js" crossorigin="anonymous"></script>
+    <style type="text/css">
+      body {
+        background:#63b47a;
+      }
+      .border{
+        box-shadow: 45px 45px 0px rgba(0, 0, 0, .1);
+      }
+      i {
+        font-size: 40pt;
+        min-width: 40px;
+        margin: 0px 25px;
+        vertical-align: bottom;
+      }
+      .form-control {
+        background:#f5f5f5;
+        border:1px solid #eee;
+      }
+      .btn {
+        box-shadow: 0px 7px 0px rgba(86, 34, 16);
+      }
+    </style>
+  </head>
+  <body>
+    <%= render 'form', money_body: @money_body %>
+  </body>
+</html>

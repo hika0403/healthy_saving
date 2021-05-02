@@ -1,42 +1,34 @@
-<div class="border col-7 container">
+<div class="container border rounded my-5 py-3 col-md-5 bg-white">
+  <a type="button" onclick="history.back()"><i class="fas fa-arrow-left"></i></a>
   <br>
-  <h2>記録</h2>
+  <h2 class="text-center"><i class="fas fa-piggy-bank"></i>Today's Record</h2>
   <br>
   <%= form_with(model: money_body, url: money_index_path, method: :post, local: true) do |form| %>
-    <div class="row align-items-center justify-content-center">
-      <div class="col-mdd-flex">
-        <% if money_body.errors.any? %>
-          <div id="error_explanation">
-            <h2><%= pluralize(money_body.errors.count, "error") %> prohibited this money from being saved:</h2>
-            <ul>
-              <% money_body.errors.full_messages.each do |message| %>
-                <li><%= message %></li>
-              <% end %>
-            </ul>
-          </div>
-        <% end %>
-        <form>
-          <div class="form-group">
-            <%= form.label :貯金金額 %>
-            <%= form.text_field :saving_amount, class:"form-control", placeholder:"500" %>
-          </div>
-          <div class="form-group">
-            <%= form.label :体重 %>
-            <%= form.text_field :weight, class:"form-control", placeholder:"50" %>
-          </div>
-          <div class="form-group">
-              <label>生年月日</label>
-              <span>必須</span>
-          </div>
-          <div class="form-group">
-            <%= form.label :目的 %>
-            <%= form.text_field :text, class:"form-control", placeholder:"我慢できた" %>
-          </div>
-          <div class="container">
-            <%= form.submit '決定', data: { confirm: '変更できません。よろしいですか?' }, class:"btn btn-primary btn-lg rounded-pill" %>
-          </div>
-        </form>
-      </div>
+    <div class="row">
+      <% if money_body.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(money_body.errors.count, "error") %> prohibited this money from being saved:</h2>
+          <ul>
+            <% money_body.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+      <form>
+        <div class="form-group mt-4">
+          <%= form.text_field :saving_amount, class:"form-control p-3", placeholder:"貯金金額 ex)500" %>
+        </div>
+        <div class="form-group mt-4">
+          <%= form.text_field :weight, class:"form-control p-3", placeholder:"体重 ex)50" %>
+        </div>
+        <div class="form-group mt-4">
+          <%= form.text_field :text, class:"form-control py-5", placeholder:"一言 ex)我慢できた" %>
+        </div>
+        <div class="d-flex flex-row justify-content-center mt-4">
+          <%= form.submit 'Record', data: { confirm: '変更できません。よろしいですか?' }, class:"btn btn-danger w-100 p-4" %>
+        </div>
+      </form>
     </div>
   <% end %>
 </div>
