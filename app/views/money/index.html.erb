@@ -11,16 +11,10 @@
       a, a:visited, a:focus, a:hover {
         text-decoration: none;
       }
-      /* 写真の導入 */
-      /* .jumbotron { 
-        background:url(github.png) center no-repeat; background-size: cover;
-      } */
-
       /* Chart.js */
       @-webkit-keyframes chartjs-render-animation {
         from{opacity:0.99}to{opacity:1}}@keyframes chartjs-render-animation{from{opacity:0.99}to{opacity:1}}.chartjs-render-monitor{-webkit-animation:chartjs-render-animation 0.001s;animation:chartjs-render-animation 0.001s;
       }
-
       /* sidebar */
       .nav-link {
         color: black;
@@ -28,7 +22,6 @@
       .nav-link:hover {
         color: #F9C80E;
       }
-
       /* main */
       main {
         background-color: whitesmoke;
@@ -43,7 +36,7 @@
     <div class="container-fluid">
       <div class="row">
         <%# sidebar %>
-        <aside class="main-sidebar col-12 col-md-3 col-lg-2 px-0 border-end">
+        <aside class="main-sidebar col-12 col-md-3 col-lg-2 px-20 border-end">
           <div class="nav-wrapper">
             <ul class="nav flex-column">
               <li class="nav-item border-bottom py-3">
@@ -90,63 +83,101 @@
             </div>
             <% unless @goal.present? %> 
               <div class="row">
-                <div class="card card-small mb-4 pt-3 text-center">
-                  <div class="md-8">
-                    <%= image_tag "goal_index.jpg", class:"rounded-circle", width:"250" %>
+                <div class="text-center">
+                  <div class="">
+                    <%= image_tag "goal_index.jpg", class:"rounded-circle my-5", width:"550" %>
                   </div>
-                  <div class="card-body">
-                    <h4 class="card-title md-0">目標を設定しよう！</h4>
-                    <p class="card-text text-muted d-block mb-2">いつまでに達成するのかなど具体的な目標を立てよう</p>
-                    <%= link_to 'START', new_goal_path, class: "mb-2 btn btn-lg btn-pill btn-outline-success mr-2" %>
+                  <div class="">
+                    <h1>目標を設定しよう！</h1>
+                    <h2 class="text-muted d-block my-3">いつまでに達成するのかなど具体的な目標を立てよう</h2>
+                    <%= link_to 'START', new_goal_path, class: "btn btn-lg btn-pill btn-outline-success w-50 my-5" %>
                   </div>
                 </div>
               </div>
             <% end %> 
 
+            <div class="row">
             <% if @goal.present? %>
             <% @goal.each do |goal| %>
-              <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-                <h1 class="h2">Goal</h1>
-                <h2 class="text-info"><%= goal.period %></h2>
-                <p>までに</p>
-                <h2 class="text-info"><%= goal.purpose %></h2>
-                <div class="btn-toolbar mb-2 mb-md-0">
-                  <div>
-                    <%= link_to '変更する', goal_path(goal.id), class: "btn" %>
-                    <%= link_to 'delete', goal_path(goal.id), method: :delete, class:"btn btn-primary btn-lg rounded-pill float-right" %>
+              <div class="col-lg-12 col-md-12 col-sm-12 mb-4">
+                <div class="card card-stats mb-4 mb-xl-0 shadow">
+                  <div class="card-body d-flex">
+                    <div class="row m-auto">
+                      <div class="col">
+                        <span class="h2 card-title text-muted mb-0 mr-5">Goal</span>
+                        <span class="h2 font-weight-bold mb-0"><%= goal.period.strftime('%Y年%m月%d日') %></span>
+                        <span>までに</span>
+                        <span class="h2 font-weight-bold mb-0"><%= goal.purpose %></span>
+                      </div>
+                    </div>
+                    <div class="row m-auto">
+                      <%= link_to 'edit', goal_path(goal.id), class: "btn btn-outline-warning btn-lg col-sm mr-3" %>
+                      <%= link_to 'delete', goal_path(goal.id), method: :delete, class:"btn btn-outline-danger btn-lg col-sm" %>
+                    </div>
                   </div>
                 </div>
               </div>
 
-              <section class="text-center text-muted">
-                <div class="container">
-                  <div class="row">
-                    <div class="col-sm-5 mb-5 mb-md-0">
-                      <div class="stat">
-                        <h3><%= goal.period %></h3>
-                        <p>いつまで</p>
-                      </div>
-                    </div>
-                    <div class="col-sm-3 mb-5 mb-md-0">
-                      <div class="stat">
-                        <h3><%= goal.saving_goal %><b>円</b></h3>
-                        <p>貯金金額</p>
-                      </div>
-                    </div>
-                    <div class="col-sm-3">
-                      <div class="stat">
-                        <h3><%= goal.weight_goal %><b>kg</b></h3>
-                        <p>体重</p>
+              <div class="col-lg-4 col-md-4 col-sm-12 mb-4">
+                <div class="card card-stats mb-4 mb-xl-0 shadow">
+                  <div class="card-body d-flex">
+                    <div class="row">
+                      <div class="col py-3">
+                        <div class="h2 card-title text-muted mb-5">Saving Money</div>
+                        <h3 class="card-title text-muted">Total</h3>
+                        <div class="h1 font-weight-bold mb-3">￥<%= Money.sumprice %></div>
+                        <h3 class="card-title text-muted">Goal</h3>
+                        <div class="h1 font-weight-bold">￥<%= goal.saving_goal %></div>
                       </div>
                     </div>
                   </div>
                 </div>
-              </section>
+              </div>
 
+              <div class="col-lg-8 col-md-8 col-sm-12 mb-4">
+                <div class="card card-stats mb-4 mb-xl-0 shadow">
+                  <div class="card-body d-flex">
+                    <div class="row m-auto">
+                      <div class="col">
+                        <div class="h2 card-title text-muted">Saving Money</div>
+                        <%= column_chart @money.group_by_day(:created_at).sum(:saving_amount), xtitle: "日付", ytitle: "貯金額(円)", colors: ["#3cb371"], width: "500px" %>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-lg-8 col-md-8 col-sm-12 mb-4">
+                <div class="card card-stats mb-4 mb-xl-0 shadow">
+                  <div class="card-body d-flex">
+                    <div class="row m-auto">
+                      <div class="col">
+                        <div class="h2 card-title text-muted">Lose Weight</div>
+                        <%= area_chart @bodies.group_by_day(:created_at).sum(:weight), xtitle: "日付", ytitle: "体重(KG)", colors: ["#3cb371"], width: "500px" %>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-lg-4 col-md-4 col-sm-12 mb-4">
+                <div class="card card-stats mb-4 mb-xl-0 shadow">
+                  <div class="card-body d-flex">
+                    <div class="row">
+                      <div class="col py-3">
+                        <div class="h2 card-title text-muted mb-5">Lose Weight</div>
+                        <h3 class="card-title text-muted">My weight</h3>
+                        <div class="h1 font-weight-bold mb-3"><%= Body.recentweight %>KG</div>
+                        <h3 class="card-title text-muted">Goal</h3>
+                        <div class="h1 font-weight-bold"><%= goal.weight_goal %>KG</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             <% end %>
-            <%= column_chart @money.group_by_day(:created_at).sum(:saving_amount), xtitle: "日付", ytitle: "貯金額(円)" %>
-            <%= area_chart @bodies.group_by_day(:created_at).sum(:weight), xtitle: "日付", ytitle: "体重(KG)" %>
             <% end %>
+            </div>
           </div>
         </main>
       </div>
