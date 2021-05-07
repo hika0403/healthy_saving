@@ -6,7 +6,16 @@
     <link href="https://fonts.googleapis.com/css?family=Noto+Sans+JP&display=swap" rel="stylesheet">
     <link href="carousel.css" rel="stylesheet">
     <link href="../example.css" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/81c73138ec.js" crossorigin="anonymous"></script>
     <style type="text/css">
+     /* Pig icon */
+    i {
+      font-size: 40pt;
+      min-width: 40px;
+      margin: 0px 25px;
+      vertical-align: bottom;
+    }
+
     </style>
   </head>
   <body>
@@ -14,11 +23,18 @@
     <div class="container-fluid">
       <div class="row">
         <div class="headerline bg-success">
-            <%# <%= image_tag "colorful_money.jpg", class:"img-fluid h-100 w-100", alt:"Generic placeholder image" %> %>
-          <div class="my-auto bg-warning">
-            <h1 class="h1 text-white">食べたつもり貯金</h1>
+          <div class="bg-warning">
+            <h1 class="h1 text-white"><i class="fas fa-piggy-bank"></i>食べたつもり貯金</h1>
             <h1 class="h2 text-white">ずっと欲しかった物・物のために貯金アプリでダイエットはじめませんか？</h1>
-            <a class="btn btn-outline-secondary" href="#">今すぐ始める</a>
+          </div>
+          <div class='text-center'>
+            <% if user_signed_in? %>
+              <%= link_to "#{current_user.given_name}さん", "#", class: "btn btn-outline-secondary mr-5" %>
+              <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "btn btn-secondary" %>
+            <% else %>
+              <%= link_to 'ログイン', new_user_session_path, class: "btn btn-outline-secondary mr-5" %>
+              <%= link_to '新規登録', new_user_registration_path, class: "btn btn-secondary" %>
+            <% end %>
           </div>
         </div>
       </div>
@@ -91,6 +107,7 @@
           </div>
           <div class="col-md-5 order-md-1">
             <%= image_tag "phone.png", class:"featurette-image img-fluid mx-auto", alt:"Generic placeholder image" %>
+            <a class="btn btn-outline-secondary" href="#">今すぐ始める</a>
           </div>
         </div>
 
