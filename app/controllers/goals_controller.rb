@@ -1,5 +1,5 @@
 class GoalsController < ApplicationController
-  before_action :set_goal, only: %i(show update destroy)
+  before_action :set_goal, only: %i[show update destroy]
 
   def index
   end
@@ -13,7 +13,7 @@ class GoalsController < ApplicationController
 
     if @goal.save
       redirect_to money_index_path
-    else 
+    else
       render :new
     end
   end
@@ -35,6 +35,7 @@ class GoalsController < ApplicationController
   end
 
   private
+
   def set_goal
     @goal = Goal.find(params[:id])
   end

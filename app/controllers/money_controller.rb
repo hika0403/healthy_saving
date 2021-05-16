@@ -27,7 +27,7 @@ class MoneyController < ApplicationController
     respond_to do |format|
       if @money_body.valid?
         @money_body.save
-        format.html { redirect_to money_index_path, notice: "Money was successfully created." }
+        format.html { redirect_to money_index_path, notice: 'Money was successfully created.' }
         format.json { render :show, status: :created, location: @money_body }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -51,17 +51,18 @@ class MoneyController < ApplicationController
   def destroy
     @money.destroy
     respond_to do |format|
-      format.html { redirect_to money_index_path, notice: "Money was successfully destroyed." }
+      format.html { redirect_to money_index_path, notice: 'Money was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
 
   private
-    def set_money
-      @money = Money.find(params[:id])
-    end
 
-    def money_params
-      params.require(:money_body).permit(:saving_amount, :text, :weight).merge(user_id: current_user.id)
-    end
+  def set_money
+    @money = Money.find(params[:id])
+  end
+
+  def money_params
+    params.require(:money_body).permit(:saving_amount, :text, :weight).merge(user_id: current_user.id)
+  end
 end

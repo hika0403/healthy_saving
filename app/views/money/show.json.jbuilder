@@ -1,1 +1,1 @@
-json.partial! "money/money", money: @money
+json.partial! 'money/money', money: @money

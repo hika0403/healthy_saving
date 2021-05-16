@@ -1,1 +1,1 @@
-json.array! @money, partial: "money/money", as: :money
+json.array! @money, partial: 'money/money', as: :money

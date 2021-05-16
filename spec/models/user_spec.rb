@@ -63,7 +63,7 @@ RSpec.describe User, type: :model do
       it 'family_nameが全角ひらがな、全角カタカナ、漢字以外場合は登録できないこと' do
         @user.family_name = 'aiueo'
         @user.valid?
-        expect(@user.errors.full_messages).to include("Family name 全角文字を使用してください")
+        expect(@user.errors.full_messages).to include('Family name 全角文字を使用してください')
       end
       it 'given_nameがない場合は登録できないこと' do
         @user.given_name = ''
@@ -73,7 +73,7 @@ RSpec.describe User, type: :model do
       it 'given_nameが全角ひらがな、全角カタカナ、漢字以外場合は登録できないこと' do
         @user.given_name = 'abcde'
         @user.valid?
-        expect(@user.errors.full_messages).to include("Given name 全角文字を使用してください")
+        expect(@user.errors.full_messages).to include('Given name 全角文字を使用してください')
       end
       it 'emailがない場合は登録できないこと' do
         @user.email = ''

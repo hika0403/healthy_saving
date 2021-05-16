@@ -14,5 +14,4 @@ class MoneyBody
     Money.create(saving_amount: saving_amount, text: text, user_id: user_id)
     Body.create(weight: weight, user_id: user_id)
   end
-
 end
