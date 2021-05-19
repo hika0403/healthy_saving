@@ -1,27 +1,26 @@
 # frozen_string_literal: true
 
 class Users::PasswordsController < Devise::PasswordsController
+  #   def edit
+  #     @current_user = User.find(params[:id])
 
-#   def edit
-#     @current_user = User.find(params[:id])
+  #   end
 
-#   end
-
-#   def update
-#     @current_user = User.find(params[:id])
-#       if current_user.update_with_password(user_params)
-#           redirect_to 'money/index'
-#       else
-#           render :edit
-#       end
-#   end
+  #   def update
+  #     @current_user = User.find(params[:id])
+  #       if current_user.update_with_password(user_params)
+  #           redirect_to 'money/index'
+  #       else
+  #           render :edit
+  #       end
+  #   end
 
   # Never trust parameters from the scary internet, only allow the white list through.
-#   private
-#   def user_params
-#       params.require(:user).permit(:email, :password, :password_confirmation, :current_password)
-#   end
-# end
+  #   private
+  #   def user_params
+  #       params.require(:user).permit(:email, :password, :password_confirmation, :current_password)
+  #   end
+  # end
   # GET /resource/password/new
   # def new
   #   super
