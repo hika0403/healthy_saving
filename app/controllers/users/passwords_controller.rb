@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-# class Users::PasswordsController < Devise::PasswordsController
+class Users::PasswordsController < Devise::PasswordsController
 
 #   def edit
 #     @current_user = User.find(params[:id])
@@ -52,4 +52,4 @@
   # def after_sending_reset_password_instructions_path_for(resource_name)
   #   super(resource_name)
   # end
-# end
+end
