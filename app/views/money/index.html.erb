@@ -7,13 +7,26 @@
     <link href="dashboard.css" rel="stylesheet">
     <link href="../example.css" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Teko:wght@500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=M+PLUS+1p:wght@900&display=swap" rel="stylesheet">
     <style type="text/css">
       a, a:visited, a:focus, a:hover {
         text-decoration: none;
       }
+      /* main container background */
+      .main-content-container {
+        background-image: linear-gradient(to top, #c1dfc4 0%, #deecdd 100%);
+      }
       /* Chart.js */
       @-webkit-keyframes chartjs-render-animation {
-        from{opacity:0.99}to{opacity:1}}@keyframes chartjs-render-animation{from{opacity:0.99}to{opacity:1}}.chartjs-render-monitor{-webkit-animation:chartjs-render-animation 0.001s;animation:chartjs-render-animation 0.001s;
+        from{opacity:0.99}to{opacity:1}
+      }
+      @keyframes chartjs-render-animation {
+        from{opacity:0.99}to{opacity:1}
+      }
+      .chartjs-render-monitor {
+        -webkit-animation:chartjs-render-animation 0.001s;animation:chartjs-render-animation 0.001s;
       }
       /* sidebar */
       .nav-link {
@@ -22,13 +35,111 @@
       .nav-link:hover {
         color: #F9C80E;
       }
-      /* main */
-      main {
-        background-color: whitesmoke;
+      /* goal 見出し */
+      .goal-title {
+        font-family: 'Teko', sans-serif;
+        font-size: 100px;
+        padding: 40px;
+      }
+      .money-title {
+        color: #FFD700;
+      }
+      .weight-title {
+        color: #3CB371;
+      }
+      /* うまい棒BOX */
+.hitokoto{
+  background: rgba(255, 229, 178, 0.61);
+  margin: 2em 0;
+  padding: 25px;
+  border-radius: 10px;
+}
+
+.hitokoto-circle1{
+  font-size: 16px;
+  line-height: 1.5;
+  position: absolute;
+  margin-top: -37px;
+  font-weight: bold;
+  color: #fff;
+  background-color:#ffa726;
+  border-radius: 50%;
+  text-align: center;
+  width: 24px;
+  height: 24px;
+}
+
+.hitokoto-circle1:after{
+  content: "め";
+  position: absolute;
+  margin-top: .2em;
+  font-weight: bold;
+  color: #fff;
+  background-color:#ffa726;
+  border-radius: 50%;
+  text-align: center;
+  width: 24px;
+  height: 24px;
+}
+
+.hitokoto-circle2:before{
+  content: "";
+  position: absolute;
+  top: 100%;
+  margin-left: -12px;
+  border: 5px solid transparent;
+  border-top: 10px solid #ffa726;
+  -ms-transform: rotate(-20deg);
+  -webkit-transform: rotate(-20deg);
+  transform: rotate(-20deg);
+}
+
+.hitokoto-circle2{
+  position: absolute;
+  font-size: 16px;
+  line-height: 1.5;
+  margin-top: -37px;
+  margin-left: 40px;
+  font-weight: bold;
+  color: #fff;
+  background-color:#ffa726;
+  border-radius: 50%;
+  text-align: center;
+  width: 24px;
+  height: 24px;
+}
+.hitokoto-circle2:after{
+  content: "識";
+  position: absolute;
+  margin-top: .2em;
+  font-weight: bold;
+  color: #fff;
+  background-color:#ffa726;
+  border-radius: 50%;
+  text-align: center;
+  width: 24px;
+  height: 24px;
+}
+.hitokoto p{
+  margin: 0;
+  padding: 0;
+}      
+      .box-p2 {
+        font-family: 'M PLUS 1p', sans-serif;
+        color: #f00;
+        font-size: 20px;
+        text-shadow:1px 0 0 black;
+      }
+      .box-p3 {
+        font-size: 50px;
+        font-weight: 600;
+      }
+      .box-p4 {
+        font-size: 50px;
       }
     </style>
   </head>
-  <body class="h-100">
+  <body>
 
     <%# header %>
     <%= render 'shared/header' %>
@@ -36,7 +147,7 @@
     <div class="container-fluid">
       <div class="row">
         <%# sidebar %>
-        <aside class="main-sidebar col-12 col-md-3 col-lg-2 px-20 border-end">
+        <aside class="main-sidebar col-md-3 col-lg-2 px-20 border-end">
           <div class="nav-wrapper">
             <ul class="nav flex-column">
               <li class="nav-item border-bottom py-3">
@@ -74,13 +185,8 @@
         </aside>
 
         <%# main-content %>
-        <main class="main-content col-lg-10 col-md-9 col-sm-12 p-0">
-          <div class="main-content-container container-fluid px-4">
-            <div class="page-header row no-gutters py-4">
-              <div class="col-12 col-sm-4 text-center text-sm-left mb-0">
-                <h3 class="page-title">TOPPAGE</h3>
-              </div>
-            </div>
+        <main class="main-content col-lg-10 col-md-9 col-sm-12">
+          <div class="main-content-container container-fluid py-5 px-3">
             <% unless @goal.present? %> 
               <div class="row">
                 <div class="text-center">
@@ -99,22 +205,16 @@
             <div class="row">
             <% if @goal.present? %>
             <% @goal.each do |goal| %>
-              <div class="col-lg-12 col-md-12 col-sm-12 mb-4">
-                <div class="card card-stats mb-4 mb-xl-0 shadow">
-                  <div class="card-body d-flex">
-                    <div class="row m-auto">
-                      <div class="col">
-                        <span class="h2 card-title text-muted mb-0 mr-5">Goal</span>
-                        <span class="h2 font-weight-bold mb-0"><%= goal.period.strftime('%Y年%m月%d日') %></span>
-                        <span>までに</span>
-                        <span class="h2 font-weight-bold mb-0"><%= goal.purpose %></span>
-                      </div>
-                    </div>
-                    <div class="row m-auto">
-                      <%= link_to 'edit', goal_path(goal.id), class: "btn btn-outline-warning btn-lg col-sm mr-3" %>
-                      <%= link_to 'delete', goal_path(goal.id), method: :delete, class:"btn btn-outline-danger btn-lg col-sm" %>
-                    </div>
-                  </div>
+              <div class="col-12 d-flex">
+                <div class="goal-wrap">
+                  <span class="goal-title" ><span class="text-warning">G</span>OAL</span>
+                  <span class="h2"><%= goal.period.strftime('%Y年%m月%d日') %>
+                  <span>までに</span>
+                  <span class="h2 font-weight-bold", style="font-size: 50px;   background: linear-gradient(transparent 50%, #00FF00 50%);"><%= goal.purpose %></span>
+                </div>
+                <div class="m-auto mr-5 d-flex">
+                  <%= link_to 'edit', goal_path(goal.id), class: "btn btn-lg btn-outline-success mx-3" %>
+                  <%= link_to 'delete', goal_path(goal.id), method: :delete, class:"btn btn-lg btn-outline-success" %>
                 </div>
               </div>
 
@@ -123,9 +223,17 @@
                   <div class="card-body d-flex">
                     <div class="row">
                       <div class="col py-3">
-                        <div class="h2 card-title text-muted mb-5">Saving Money</div>
+                        <div class="h2 card-title mb-5 text-muted"><i class="money-title fas fa-comment-dollar"></i>Saving Money</div>
                         <h3 class="card-title text-muted">Total</h3>
-                        <div class="h1 font-weight-bold mb-3">￥<%= Money.sumprice %></div>
+                        <div class="box">
+                          <div class="h1 font-weight-bold mb-3">￥<%= Money.sumprice %></div>
+                          <div class="hitokoto">
+                              <span class="hitokoto-circle1">ま</span>
+                              <span class="hitokoto-circle2">知</span>
+                              <p class="box-p1">現在、<span class="box-p2">うまい棒</span></p>
+                              <p class="box-p4"><span class="box-p3"><%= Money.umai %></span>本分です</p>
+                          </div>
+                        </div>
                         <h3 class="card-title text-muted">Goal</h3>
                         <div class="h1 font-weight-bold">￥<%= goal.saving_goal %></div>
                       </div>
@@ -139,8 +247,8 @@
                   <div class="card-body d-flex">
                     <div class="row m-auto">
                       <div class="col">
-                        <div class="h2 card-title text-muted">Saving Money</div>
-                        <%= column_chart @money.group_by_day(:created_at).sum(:saving_amount), xtitle: "日付", ytitle: "貯金額(円)", colors: ["#3cb371"], width: "500px" %>
+                        <div class="h2 card-title text-muted"><i class="money-title fas fa-comment-dollar"></i>Saving Money</div>
+                        <%= column_chart @money.group_by_day(:created_at, last: 7).sum(:saving_amount), xtitle: "日付", ytitle: "貯金額(円)", colors: ["#FFD700"], width: "500px" %>
                       </div>
                     </div>
                   </div>
@@ -152,8 +260,8 @@
                   <div class="card-body d-flex">
                     <div class="row m-auto">
                       <div class="col">
-                        <div class="h2 card-title text-muted">Lose Weight</div>
-                        <%= area_chart @bodies.group_by_day(:created_at).sum(:weight), xtitle: "日付", ytitle: "体重(KG)", colors: ["#3cb371"], width: "500px" %>
+                        <div class="h2 card-title text-muted"><i class="weight-title fas fa-weight"></i>Lose Weight</div>
+                        <%= area_chart @bodies.group_by_day(:created_at, last: 7).sum(:weight), xtitle: "日付", ytitle: "体重(KG)", colors: ["#3CB371"], width: "500px" %>
                       </div>
                     </div>
                   </div>
@@ -165,7 +273,7 @@
                   <div class="card-body d-flex">
                     <div class="row">
                       <div class="col py-3">
-                        <div class="h2 card-title text-muted mb-5">Lose Weight</div>
+                        <div class="h2 card-title mb-5 text-muted"><i class="weight-title fas fa-weight"></i>Lose Weight</div>
                         <h3 class="card-title text-muted">My weight</h3>
                         <div class="h1 font-weight-bold mb-3"><%= Body.recentweight %>KG</div>
                         <h3 class="card-title text-muted">Goal</h3>
