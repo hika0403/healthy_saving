@@ -31,6 +31,16 @@
       <h2 class="text-center"><i class="fas fa-piggy-bank"></i>Setting Goal</h2>
       <br>
       <%= form_with(model: @goal, local: true) do |goal| %>
+
+        <% if @goal.errors.any? %>
+          <h2><%= pluralize(@goal.errors.count, "error") %> のため記録できません</h2>
+          <ul>
+            <% @goal.errors.full_messages.each do |msg| %>
+              <li><%= msg %></li>
+            <% end %>
+          </ul>
+        <% end %>
+
         <div class="row">
           <form>
             <div class="form-group mt-4">

@@ -7,7 +7,7 @@
     <div class="row">
       <% if money_body.errors.any? %>
         <div id="error_explanation">
-          <h2><%= pluralize(money_body.errors.count, "error") %> prohibited this money from being saved:</h2>
+          <h2><%= pluralize(money_body.errors.count, "error") %> のため記録できません</h2>
           <ul>
             <% money_body.errors.full_messages.each do |message| %>
               <li><%= message %></li>
