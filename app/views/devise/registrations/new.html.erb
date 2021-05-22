@@ -42,7 +42,7 @@
 
       <%= form_with model: @user, url: user_registration_path, method: :post, local: true do |f| %>
         <div class="row">
-          <%= render "devise/shared/error_messages", model: f.object %>
+          <%= render 'devise/shared/error_messages', resource: f.object %>
 
           <div class="form-group col-md-6 mt-4">
             <%= f.text_field :family_name, autofocus: true, class:"form-control p-3", placeholder:"苗字" %>
