@@ -36,6 +36,33 @@
         color: #F9C80E;
       }
       /* goal 見出し */
+      .ribbon-text {
+        color: #5c8584;
+        font-size: 70px;
+        font-weight: 900;
+        letter-spacing: .1em;
+      }
+      /* goal startbtn */
+      .start-btn {
+        position: relative;
+        background-color: #ceb849;
+        border: 1px solid transparent;
+        border-radius: 35px;
+        width: 350px;
+        font-size: 70px;
+      }
+      .start-btn :before {
+        content: '';
+        position: absolute;
+        top: -5px;
+        left: -5px;
+        width: 100%;
+        height: 100%;
+        background-color: transparent;
+        border: 1px solid #333;
+        border-radius: 35px;
+      }
+      /* goal 見出し */
       .goal-title {
         font-family: 'Teko', sans-serif;
         font-size: 100px;
@@ -48,82 +75,78 @@
         color: #3CB371;
       }
       /* うまい棒BOX */
-.hitokoto{
-  background: rgba(255, 229, 178, 0.61);
-  margin: 2em 0;
-  padding: 25px;
-  border-radius: 10px;
-}
-
-.hitokoto-circle1{
-  font-size: 16px;
-  line-height: 1.5;
-  position: absolute;
-  margin-top: -37px;
-  font-weight: bold;
-  color: #fff;
-  background-color:#ffa726;
-  border-radius: 50%;
-  text-align: center;
-  width: 24px;
-  height: 24px;
-}
-
-.hitokoto-circle1:after{
-  content: "め";
-  position: absolute;
-  margin-top: .2em;
-  font-weight: bold;
-  color: #fff;
-  background-color:#ffa726;
-  border-radius: 50%;
-  text-align: center;
-  width: 24px;
-  height: 24px;
-}
-
-.hitokoto-circle2:before{
-  content: "";
-  position: absolute;
-  top: 100%;
-  margin-left: -12px;
-  border: 5px solid transparent;
-  border-top: 10px solid #ffa726;
-  -ms-transform: rotate(-20deg);
-  -webkit-transform: rotate(-20deg);
-  transform: rotate(-20deg);
-}
-
-.hitokoto-circle2{
-  position: absolute;
-  font-size: 16px;
-  line-height: 1.5;
-  margin-top: -37px;
-  margin-left: 40px;
-  font-weight: bold;
-  color: #fff;
-  background-color:#ffa726;
-  border-radius: 50%;
-  text-align: center;
-  width: 24px;
-  height: 24px;
-}
-.hitokoto-circle2:after{
-  content: "識";
-  position: absolute;
-  margin-top: .2em;
-  font-weight: bold;
-  color: #fff;
-  background-color:#ffa726;
-  border-radius: 50%;
-  text-align: center;
-  width: 24px;
-  height: 24px;
-}
-.hitokoto p{
-  margin: 0;
-  padding: 0;
-}      
+      .hitokoto{
+        background: rgba(255, 229, 178, 0.61);
+        margin: 2em 0;
+        padding: 25px;
+        border-radius: 10px;
+      }
+      .hitokoto-circle1{
+        font-size: 16px;
+        line-height: 1.5;
+        position: absolute;
+        margin-top: -37px;
+        font-weight: bold;
+        color: #fff;
+        background-color:#ffa726;
+        border-radius: 50%;
+        text-align: center;
+        width: 24px;
+        height: 24px;
+      }
+      .hitokoto-circle1:after{
+        content: "め";
+        position: absolute;
+        margin-top: .2em;
+        font-weight: bold;
+        color: #fff;
+        background-color:#ffa726;
+        border-radius: 50%;
+        text-align: center;
+        width: 24px;
+        height: 24px;
+      }
+      .hitokoto-circle2:before{
+        content: "";
+        position: absolute;
+        top: 100%;
+        margin-left: -12px;
+        border: 5px solid transparent;
+        border-top: 10px solid #ffa726;
+        -ms-transform: rotate(-20deg);
+        -webkit-transform: rotate(-20deg);
+        transform: rotate(-20deg);
+      }
+      .hitokoto-circle2{
+        position: absolute;
+        font-size: 16px;
+        line-height: 1.5;
+        margin-top: -37px;
+        margin-left: 40px;
+        font-weight: bold;
+        color: #fff;
+        background-color:#ffa726;
+        border-radius: 50%;
+        text-align: center;
+        width: 24px;
+        height: 24px;
+      }
+      .hitokoto-circle2:after{
+        content: "識";
+        position: absolute;
+        margin-top: .2em;
+        font-weight: bold;
+        color: #fff;
+        background-color:#ffa726;
+        border-radius: 50%;
+        text-align: center;
+        width: 24px;
+        height: 24px;
+      }
+      .hitokoto p{
+        margin: 0;
+        padding: 0;
+      }      
       .box-p2 {
         font-family: 'M PLUS 1p', sans-serif;
         color: #f00;
@@ -190,14 +213,11 @@
             <% unless @goal.present? %> 
               <div class="row">
                 <div class="text-center">
-                  <div class="">
-                    <%= image_tag "goal_index.jpg", class:"rounded-circle my-5", width:"550" %>
-                  </div>
-                  <div class="">
-                    <h1>目標を設定しよう！</h1>
-                    <h2 class="text-muted d-block my-3">いつまでに達成するのかなど具体的な目標を立てよう</h2>
-                    <%= link_to 'START', new_goal_path, class: "btn btn-lg btn-pill btn-outline-success w-50 my-5" %>
-                  </div>
+                  <span class="ribbon-text">Welcome!<%= "#{current_user.nickname}さん" %></span>
+                  <%= image_tag "goal_index.jpg", class:"goal-image rounded-circle mb-5", width:"700" %>
+                  <h2 class="d-block my-3">ユーザー新規登録が完了！</h2>
+                  <h2 class="d-block mt-3 mb-5">次に目標を立てよう！目標は何度でも変更できるよ</h2>
+                  <i class="start-btn px-3 py-1 fas fa-play-circle"><%= link_to 'START', new_goal_path, class:"btn" %></i>
                 </div>
               </div>
             <% end %> 
