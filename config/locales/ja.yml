@@ -1,0 +1,24 @@
+ja:
+  activerecord:
+    models:
+      user: ユーザー
+    attributes:
+      user:
+        name: 名前
+        email: メールアドレス
+        password: パスワード
+        family_name: 苗字
+        given_name: 名前
+        nickname: ニックネーム
+        birth_day: 誕生日
+      goal:
+        weight_goal: 体重の目標
+        saving_goal: 貯金金額の目標
+        purpose: 目的
+        period: 期限
+
+  activemodel:
+    attributes:
+      money_body:
+        saving_amount: 貯金金額
+        weight: 体重
