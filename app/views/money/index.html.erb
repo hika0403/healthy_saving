@@ -12,6 +12,8 @@
     <link href="https://fonts.googleapis.com/css2?family=M+PLUS+1p:wght@900&display=swap" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.1/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.1/ScrollTrigger.min.js"></script>
+    <div id="fb-root"></div>
+    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/ja_JP/sdk.js#xfbml=1&version=v10.0&appId=480741883366460&autoLogAppEvents=1" nonce="tAkMEPfe"></script>
     <style type="text/css">
       a, a:visited, a:focus, a:hover {
         text-decoration: none;
@@ -37,6 +39,29 @@
       .nav-link:hover {
         color: #F9C80E;
       }
+.tw-share-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 5em;
+  height: 2em;
+  /* padding: 0.3em; */
+  margin: 1em 0 2em 0;
+  text-decoration: none;
+  background: #55acee;
+  border-radius: 3px;
+}
+.fa-twitter { 
+  margin: 0;
+  font-size: 0.9em;
+  color: #fff;
+  min-width: 15px;
+}
+.tw-text {
+  font-size: 0.6em;
+  color: #fff;
+  margin: 0;
+}
       /* welcome 見出し */
       .welcome-top {
         position: absolute;
@@ -226,17 +251,18 @@
                 </a>
               </li>
               <li class="nav-item border-bottom py-3">
-                <a class="nav-link" href="/users/edit">
-                  <span data-feather="users"></span>
-                  User Profile
-                </a>
-              </li>
-              <li class="nav-item border-bottom py-3">
                 <a class="nav-link" href="/money">
                   <span data-feather="home"></span>
                   Top Page
                 </a>
               </li>
+              <div class="tw-share-button">
+                <i class="fab fa-twitter"></i>
+                <%= link_to "ツイート", "http://twitter.com/intent/tweet?text=#{Date.today.month}月#{Date.today.day}日の記録&hashtags=食べたつもり貯金", class:"tw-text", target:'_blank' %>
+              </div>
+              <div class="fb-share-button" data-href="https://developers.facebook.com/docs/plugins/" data-layout="button" data-size="large">
+                <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">シェア</a>
+              </div>
             </ul>
           </div>
         </aside>
