@@ -1,18 +1,12 @@
-// import { gsap } from "gsap";
-// import { ScrollTrigger } from 'gsap/ScrollTrigger'
-// gsap.registerPlugin(ScrollTrigger);
+// function anime() {
 
-// function pullDown() {
-
-//   const pullDownText = document.getElementsByClassName("welcome-text")
-//   const pullDownParents = document.getElementsByClassName("goal-image")
-
-//   gsap.from(".welcome-pulldown", {
-//     scrollTrigger: {
-//       trigger: "",
-//       start: "top center",
-//       markers: true
-//     }
+//   const div = document.querySelector('.js-text')
+//   div.animate({
+//     color: ['#409EFF', '#FF409E']
+//   }, {
+//     duration: 1500,
+//     iterations: Infinity
 //   })
 // }
-//   window.addEventListener('load', pullDown)
+
+// window.addEventListener('load', anime)
