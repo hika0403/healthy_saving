@@ -272,7 +272,7 @@
                           <div class="weight-flex pt-3 h5 text-success">
                             <div class="mb-3">
                               (目標まで残り
-                              <% forpoal = goal.weight_goal - Body.recentweight %>
+                              <% forpoal = goal.weight_goal.to_i - Body.recentweight.to_i %>
                               <%= forpoal %>kg)
                             </div>
                           </div>
