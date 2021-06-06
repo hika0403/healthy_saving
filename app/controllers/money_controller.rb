@@ -24,15 +24,11 @@ class MoneyController < ApplicationController
   def create
     @money_body = MoneyBody.new(money_params)
 
-    respond_to do |format|
-      if @money_body.valid?
-        @money_body.save
-        format.html { redirect_to money_index_path, notice: 'Money was successfully created.' }
-        format.json { render :show, status: :created, location: @money_body }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @money_body.errors, status: :unprocessable_entity }
-      end
+    if @money_body.valid?
+      @money_body.save
+      redirect_to money_index_path
+    else
+      render :new
     end
   end
 
