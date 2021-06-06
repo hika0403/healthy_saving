@@ -23,12 +23,12 @@ RSpec.describe 'ユーザー新規登録', type: :system do
       fill_in 'user_password', with: @user.password
       fill_in 'user_password_confirmation', with: @user.password_confirmation
       fill_in 'user_nickname', with: @user.nickname
-      select '1999',from: 'user_birth_day_1i'
-      select '12',from: 'user_birth_day_2i'
-      select '12',from: 'user_birth_day_3i'
-      expect {
+      select '1999', from: 'user_birth_day_1i'
+      select '12', from: 'user_birth_day_2i'
+      select '12', from: 'user_birth_day_3i'
+      expect do
         find('input[name="commit"]').click
-      }.to change { User.count }.by(1)
+      end.to change { User.count }.by(1)
       expect(current_path).to eq(money_index_path)
     end
     it '誤った情報ではユーザー新規登録ができずに新規登録ページへ戻ってくる' do
@@ -39,16 +39,15 @@ RSpec.describe 'ユーザー新規登録', type: :system do
       fill_in 'user_password', with: ''
       fill_in 'user_password_confirmation', with: ''
       fill_in 'user_nickname', with: ''
-      select '1999',from: 'user_birth_day_1i'
-      select '12',from: 'user_birth_day_2i'
-      select '12',from: 'user_birth_day_3i'
-      expect{
+      select '1999', from: 'user_birth_day_1i'
+      select '12', from: 'user_birth_day_2i'
+      select '12', from: 'user_birth_day_3i'
+      expect do
         find('input[name="commit"]').click
-      }.to change { User.count }.by(0)
+      end.to change { User.count }.by(0)
       expect(current_path).to eq user_registration_path
     end
   end
-
 
   # context 'サインアップ済みの場合' do
   #   before do
@@ -64,7 +63,7 @@ RSpec.describe 'ユーザー新規登録', type: :system do
   #       click_link '.snsButtons_google'
   #       sleep 1
   #     }.to_not change(User, :count)
-      
+
   #   end
   # end
 end

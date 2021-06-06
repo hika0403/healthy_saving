@@ -26,32 +26,32 @@ RSpec.describe MoneyBody, type: :model do
       it 'saving_amountが空ではできないこと' do
         @money_body.saving_amount = ''
         @money_body.valid?
-        expect(@money_body.errors.full_messages).to include "貯金金額を入力してください", "貯金金額は数値で入力してください"
+        expect(@money_body.errors.full_messages).to include '貯金金額を入力してください', '貯金金額は数値で入力してください'
       end
       it 'saving_amontが半角数字以外ではできないこと' do
         @money_body.saving_amount = '１２３'
         @money_body.valid?
-        expect(@money_body.errors.full_messages).to include "貯金金額は数値で入力してください"
+        expect(@money_body.errors.full_messages).to include '貯金金額は数値で入力してください'
       end
       it 'weightが空ではできないこと' do
         @money_body.weight = ''
         @money_body.valid?
-        expect(@money_body.errors.full_messages).to include "体重を入力してください", "体重は不正な値です"
+        expect(@money_body.errors.full_messages).to include '体重を入力してください', '体重は不正な値です'
       end
       it 'weightが4桁以上ではできないこと' do
         @money_body.weight = '1234'
         @money_body.valid?
-        expect(@money_body.errors.full_messages).to include "体重は不正な値です"
+        expect(@money_body.errors.full_messages).to include '体重は不正な値です'
       end
       it 'weightが半角数字以外ではできないこと' do
         @money_body.weight = '１２３'
         @money_body.valid?
-        expect(@money_body.errors.full_messages).to include "体重は不正な値です"
+        expect(@money_body.errors.full_messages).to include '体重は不正な値です'
       end
       it 'user_idが空ではできないこと' do
         @money_body.user_id = ''
         @money_body.valid?
-        expect(@money_body.errors.full_messages).to include "Userを入力してください"
+        expect(@money_body.errors.full_messages).to include 'Userを入力してください'
       end
     end
   end

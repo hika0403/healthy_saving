@@ -23,10 +23,10 @@ RSpec.describe '今日の記録', type: :system do
       fill_in 'money_body_saving_amount', with: ''
       fill_in 'money_body_weight', with: ''
       fill_in 'money_body_text', with: ''
-      expect {
+      expect do
         find('input[name="commit"]').click
         page.driver.browser.switch_to.alert.accept
-      }.to change { Money.count }.by(0)
+      end.to change { Money.count }.by(0)
     end
   end
 end
