@@ -1,12 +1,7 @@
-// function anime() {
-
-//   const div = document.querySelector('.js-text')
-//   div.animate({
-//     color: ['#409EFF', '#FF409E']
-//   }, {
-//     duration: 1500,
-//     iterations: Infinity
+// $(function () {
+//   $(document).on("mouseover", ".row-title", function () {
+//     $(this).css({ "color": "blue" });
+//   }).on("mouseout", ".row-title", function () {
+//     $(this).css({ "color": "" });
 //   })
-// }
-
-// window.addEventListener('load', anime)
+// });
