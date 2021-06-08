@@ -9,6 +9,7 @@
     <script src="https://kit.fontawesome.com/81c73138ec.js" crossorigin="anonymous"></script>
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=Noto+Serif+JP:wght@900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
     <style type="text/css">
       /* Log in Btn */
       .btn-square-toy {
@@ -109,7 +110,7 @@
         </div>
       </div>
 
-      <div class="row py-5 my-5 d-flex flex-wrap align-items-center justify-content-center">
+      <div data-aos="fade-in" class="row py-5 my-5 d-flex flex-wrap align-items-center justify-content-center">
         <div class="col-md-4">
           <div class="h3">ダイエット中なのに</div>
           <div class="h3">ついついコンビニへ寄って</div>
@@ -120,7 +121,7 @@
           <%= image_tag "sweets.jpeg", class:"mybox featurette-image img-fluid rounded-circle", alt:"Generic placeholder image" %>
         </div>
       </div>
-      <div class="row text-center pt-5 pb-5 d-flex flex-wrap align-items-center justify-content-center">
+      <div data-aos="fade-in" class="row text-center pt-5 pb-5 d-flex flex-wrap align-items-center justify-content-center">
         <div class="col-md-2">
           <%= image_tag "usemoney.jpeg", class:"mybox featurette-image img-fluid rounded-circle", alt:"Generic placeholder image" %>
         </div>
@@ -135,14 +136,14 @@
       </div>
 
       <%# How to %>
-      <div class="row text-center pt-5 my-5">
+      <div data-aos="fade-in" class="row text-center pt-5 my-5">
         <div class="col-md-12">
           <h2 class="row-title-2 font-weight-bold"><span class="text-warning">H</span>ow to</h2>
         </div>
       </div>
       <div class="container marketing">
         <!-- Three columns of text below the carousel -->
-        <div class="row pb-5">
+        <div data-aos="fade-in" class="row pb-5">
           <div class="col-lg-4">
             <!-- image1 -->
             <style>svg#freepik_stories-good-team:not(.animated) .animable {opacity: 0;}svg#freepik_stories-good-team.animated #freepik--Arrow--inject-168 {animation: 1s 1 forwards cubic-bezier(.36,-0.01,.5,1.38) zoomIn;animation-delay: 0s;}            @keyframes zoomIn {                0% {                    opacity: 0;                    transform: scale(0.5);                }                100% {                    opacity: 1;                    transform: scale(1);                }            }        .animator-hidden { display: none; }</style>
@@ -189,16 +190,15 @@
           </div><!-- /.col-lg-4 -->
         </div><!-- /.row -->
 
-
         <!-- Start App -->
         <div class="row pt-5 my-5">
-          <div class="col-md-12 py-3 text-center">
+          <div data-aos="fade-in" class="col-md-12 py-3 text-center">
             <div class="row-title-2 font-weight-bold"><span class="text-warning">S</span>tart for Free</div>
           </div>
-          <div class="col-md-5">
+          <div data-aos="fade-in" class="col-md-5">
             <%= image_tag "cellphone.png", class:"", alt:"Generic placeholder image", style:"height: 300px;, width: 100px;" %>
           </div>
-          <div class="col-md-7">
+          <div data-aos="fade-in" class="col-md-7">
             <p class="h3 mb-3">簡単に使い始めることができます</p>
             <%= link_to 'ログイン', new_user_session_path, class: "btn btn-lg btn-outline-success m-3" %>
             <%= link_to '新規登録', new_user_registration_path, class: "btn btn-lg btn-success" %>
@@ -208,23 +208,10 @@
       </div><!-- /.container -->
     </div>
 
-
-    <!-- FOOTER -->
-    <%# <footer class="container">
-      <!-- <p class="float-right"><a href="#">Back to top</a></p> -->
-      <p class="float-right"><a href="/">トップに戻る</a></p>
-      <!-- <p>&copy; 2017-2018 Company, Inc. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p> -->
-      <p>&copy; 2017-2018 Company, Inc. &middot; <a href="#">プライバシー</a> &middot; <a href="#">利用規約</a></p>
-    </footer> %>
-
-    <%# <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <%# jquery フェードイン %>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script>
-      window.jQuery || document.write('<script src="/docs/4.5/assets/js/vendor/jquery-slim.min.js"><\/script>')
-    </script><script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js"></script><script src="/docs/4.5/assets/js/vendor/anchor.min.js"></script>
-    <script src="/docs/4.5/assets/js/vendor/clipboard.min.js"></script>
-    <script src="/docs/4.5/assets/js/vendor/bs-custom-file-input.min.js"></script>
-    <script src="/docs/4.5/assets/js/src/application.js"></script>
-    <script src="/docs/4.5/assets/js/src/search.js"></script>
-    <script src="/docs/4.5/assets/js/src/ie-emulation-modes-warning.js"></script> %>
+      AOS.init();
+    </script>
   </body>
 </html>
