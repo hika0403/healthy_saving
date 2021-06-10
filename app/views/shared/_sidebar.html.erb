@@ -11,27 +11,11 @@
     color: #F9C80E;
   }
   /* sns share btn */
-  .tw-share-button {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 5em;
-    height: 2em;
-    margin: 1em 0 2em 0;
-    text-decoration: none;
-    background: #55acee;
-    border-radius: 3px;
+  .snssharer {
+    margin-top: 20px;
   }
-  .fa-twitter { 
-    margin: 0;
-    font-size: 0.9em;
-    color: #fff;
-    min-width: 15px;
-  }
-  .tw-text {
-    font-size: 0.8em;
-    color: #fff;
-    margin: 0;
+  .snssharer span a {
+    margin: 0 0.5em;
   }
 </style>
 <aside class="main-sidebar col-md-3 col-lg-2 px-20 border-end">
@@ -61,12 +45,22 @@
           Top Page
         </a>
       </li>
-      <div class="tw-share-button">
-        <i class="fab fa-twitter"></i>
-        <%= link_to "ツイート", "http://twitter.com/intent/tweet?text=#{Date.today.month}月#{Date.today.day}日の記録&hashtags=食べたつもり貯金", class:"tw-text", target:'_blank' %>
-      </div>
-      <div class="fb-share-button" data-href="https://developers.facebook.com/docs/plugins/" data-layout="button" data-size="large">
-        <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">シェア</a>
+      <div class="snssharer">
+        <span class="facebook">
+          <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse>" target="_blank">
+            <img src="https://facebookbrand.com/wp-content/uploads/2019/04/f_logo_RGB-Hex-Blue_512.png?w=512&h=512" alt="Facebook" height="50px" width="50px">
+          </a>
+        </span>
+        <span class="twitter">
+          <a href="https://twitter.com/share?ref_src=twsrc%5Etfw&hashtags=食べたつもり貯金&text=<%= Date.today.month %>月<%= Date.today.day %>日の記録" target='_blank'>
+            <%= image_tag "Twittercircle.png", alt:"Twitter", height:"50px", width:"50px" %>
+          </a>
+        </span>
+        <span class="line">
+          <a href="https://social-plugins.line.me/lineit/share?" target="_blank">
+            <%= image_tag "LINEicon.png", alt:"LINE", height:"50px", weight:"50px" %>
+          </a>
+        </span>
       </div>
     </ul>
   </div>
