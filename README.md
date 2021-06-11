@@ -1,22 +1,21 @@
-# 食べたつもり貯金
 [![Image from Gyazo](https://i.gyazo.com/00ee3fecbd38d78d20f8c58d5fd51ce2.png)](https://gyazo.com/00ee3fecbd38d78d20f8c58d5fd51ce2)
 
-## 概要
+# 概要
 日々の体重と貯金金額を記録し、『ダイエット』と『貯金』を同時に成功させよう！というアプリケーションです。ログイン機能がついてるため、ユーザーは誰にも見られずに記録、管理することができます。反対にSNSへの投稿も簡単に行えるため、好きな時に自分の記録をシェアすることができます。
 
-## 本番環境
+# 本番環境
 __URL__ https://healthy-saving.herokuapp.com/
 
 __ログイン情報__
 <p>メールアドレス : aaa@aaa</p>
 <p>パスワード : aaAA1111</p>
 
-## 制作背景
+# 制作背景
 一見、繋がりのない『ダイエット』と『貯金』ですが、私は制作する以前からこの2つには通じる物があると感じていました。
 お菓子や飲み物などの購入を我慢することで、貯金だけでなく体重の減少にも影響があると思っていました。しかし、2つを同時に記録できるアプリがなかったため、体重管理は体重を記録するアプリを、貯金は貯金金額を記録するアプリをそれぞれ使わなければいけませんでした。そこで2つを同時に解決することのできる「食べたつもり貯金」を制作いたしました。
 
 
-## 工夫したポイント
+# 工夫したポイント
 今回のペルソナは
 
 __「健康的に痩せたいと思い始めた実家暮らしの10〜20代学生」です。__
@@ -54,17 +53,17 @@ gemであるchartkickとgroupdateを使いました。chartkickは配列のデ�
 
 [![Image from Gyazo](https://i.gyazo.com/198f11dce54a2b00b43ddb7d32a26921.gif)](https://gyazo.com/198f11dce54a2b00b43ddb7d32a26921)
 
-## 使用技術
+# 使用技術
 <p>フロントエンド : HTML/CSS</p>
 <p>バックエンド : Ruby 2.6.5/Ruby on Rails 6.1.3.1</p>
 <p>データベース : MySQL 14.14 </p>
 <p>テスト : RSpec 3.10.0</p>
 <p>エディタ : VSCode</p>
-  <a href="HTML公式サイトURL"><img src="https://www.w3.org/html/logo/downloads/HTML5_Logo_256.png" height="45px;" /></a>
-  <a href="ruby公式サイトURL"><img src="https://www.ruby-lang.org/images/header-ruby-logo.png" height="40px;" /></a>
-  <a href="MySQL公式サイトURL"><img src="https://www.mysql.com/common/logos/logo-mysql-170x115.png" height="45px;" /></a>
+  <a href="https://html.spec.whatwg.org/"><img src="https://www.w3.org/html/logo/downloads/HTML5_Logo_256.png" height="45px;" /></a>
+  <a href="https://www.ruby-lang.org/ja/documentation/"><img src="https://www.ruby-lang.org/images/header-ruby-logo.png" height="40px;" /></a>
+  <a href="https://dev.mysql.com/doc/"><img src="https://www.mysql.com/common/logos/logo-mysql-170x115.png" height="45px;" /></a>
 
-## 課題や今後実装したい機能
+# 課題や今後実装したい機能
 ・パソコン画面の大きさでしかみることができない
 
 →携帯にも合わせたレスポンシブデザインにしていきたい（サイドバーをタブにするなど）
@@ -73,9 +72,9 @@ gemであるchartkickとgroupdateを使いました。chartkickは配列のデ�
 
 →Javascriptを使い、ポップアップまたは通知が来るように実装したい
 
-## DB設計
+# DB設計
 
-### usersテーブル
+## usersテーブル
 
 | Column             | Type    | Option      | 
 | ------------------ | ------- | ----------- | 
@@ -86,12 +85,12 @@ gemであるchartkickとgroupdateを使いました。chartkickは配列のデ�
 | nickname           | string  | null: false | 
 | birth_day          | date    | null: false | 
 
-#### Association
+### Association
 - has_one :goal
 - has_many :moneys
 - has_many :bodies
 
-### goalsテーブル
+## goalsテーブル
 
 | Column      | Type       | Option            | 
 | ----------- | ---------- | ----------------- | 
@@ -101,10 +100,10 @@ gemであるchartkickとgroupdateを使いました。chartkickは配列のデ�
 | period      | date       | null: false       | 
 | user        | references | foreign_key: true | 
 
-#### Association
+### Association
 - belongs_to :user
 
-### moneysテーブル
+## moneysテーブル
 
 | Column        | Type       | Option            | 
 | ------------- | ---------- | ----------------- | 
@@ -112,15 +111,15 @@ gemであるchartkickとgroupdateを使いました。chartkickは配列のデ�
 | text          | string     |                   | 
 | user          | references | foreign_key: true | 
 
-#### Association
+### Association
 - belongs_to :user
 
-### bodiesテーブル
+## bodiesテーブル
 
 | Column | Type       | Option            | 
 | ------ | ---------- | ----------------- | 
 | weight | integer    | null: false       | 
 | user   | references | foreign_key: true | 
 
-#### Association
+### Association
 - belongs_to :user
