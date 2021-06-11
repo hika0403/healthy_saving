@@ -1,4 +1,4 @@
-# 食べたつもり貯金
+# :heavy_dollar_sign:食べたつもり貯金
 [![Image from Gyazo](https://i.gyazo.com/00ee3fecbd38d78d20f8c58d5fd51ce2.png)](https://gyazo.com/00ee3fecbd38d78d20f8c58d5fd51ce2)
 
 ## 概要
